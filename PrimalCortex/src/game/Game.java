@@ -67,7 +67,7 @@ public class Game implements GuiListener, ActionListener {
     	
     	for(int i=0; i<Config.getScreenWidth(); i += 64) {
     		for (int j=30; j<Config.getScreenWidth() - 30; j += 64) {
-    			localMap.addTile(new Tile(textureManager.getTextureByKey("grass"), i, j));    			
+    			localMap.addTile(new Tile(textureManager.getTextureByKey("grass"), i, j, 64, 64));   //TODO: hardcoded tile width and height 			
     		}
     	}
     	

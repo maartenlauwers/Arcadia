@@ -17,7 +17,7 @@ public abstract class Map {
 	}
 	
 	/**
-	 * Returns the height of the map
+	 * Returns the height (in pixels, NOT the vertical number of tiles) of the map
 	 * 
 	 * @return height
 	 */
@@ -26,7 +26,7 @@ public abstract class Map {
 	}
 	
 	/**
-	 * Returns the width of the map
+	 * Returns the width (in pixels, NOT the horizontal number of tiles) of the map
 	 * 
 	 * @return width
 	 */
@@ -84,6 +84,96 @@ public abstract class Map {
 		
 		return null;
 	}
+	
+	/**
+	 * Returns the tile north of the currently selected tile
+	 * 
+	 * @return tile
+	 */
+	public Tile getTileNorthOf(Tile tile) {
+		
+		int x = tile.getX();
+		int y = tile.getY();		
+		int height = tile.getHeight();
+		
+		for(Tile t : tileList) {
+			if(t.getX() == x) {
+				if(t.getY() == (y - height)) {
+					return t;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Returns the tile south of the currently selected tile
+	 * 
+	 * @return tile
+	 */
+	public Tile getTileSouthOf(Tile tile) {
+		
+		int x = tile.getX();
+		int y = tile.getY();		
+		int height = tile.getHeight();
+		
+		for(Tile t : tileList) {
+			if(t.getX() == x) {
+				if(t.getY() == (y + height)) {
+					return t;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Returns the tile west of the currently selected tile
+	 * 
+	 * @return tile
+	 */
+	public Tile getTileWestOf(Tile tile) {
+		
+		int x = tile.getX();
+		int y = tile.getY();
+		int width = tile.getWidth();		
+		
+		for(Tile t : tileList) {
+			if(t.getY() == y) {
+				if(t.getX() == (x - width)) {
+					return t;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Returns the tile east of the currently selected tile
+	 * 
+	 * @return tile
+	 */
+	public Tile getTileEastOf(Tile tile) {
+		
+		int x = tile.getX();
+		int y = tile.getY();
+		int width = tile.getWidth();		
+		
+		for(Tile t : tileList) {
+			if(t.getY() == y) {
+				if(t.getX() == (x + width)) {
+					return t;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	
 	
 	/**
 	 * Draws every tile on the map

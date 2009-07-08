@@ -20,6 +20,8 @@ public class Tile {
 	
 	private int x;
 	private int y;
+	private int width;
+	private int height;
 	private Image texture;
 	//private Role role;
 	private Structure structure;
@@ -27,10 +29,12 @@ public class Tile {
 	
 	private boolean selected;				
 	
-	public Tile(Image texture, int x, int y) {
+	public Tile(Image texture, int x, int y, int width, int height) {
 		this.texture = texture;
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
 		
 		this.selected = false;		
 		//role = new EmptyRole();
@@ -38,7 +42,7 @@ public class Tile {
 		
 		setState(new UnselectedTileState());	
 	}
-
+	
 	public void setX(int x) {
 		this.x = x;
 	}
@@ -53,6 +57,22 @@ public class Tile {
 	
 	public int getY() {
 		return y;
+	}
+	
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	public int getHeight() {
+		return height;
 	}
 	
 	public void setTexture(Image texture) {

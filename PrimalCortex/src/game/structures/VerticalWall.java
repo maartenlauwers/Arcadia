@@ -9,7 +9,7 @@ public class VerticalWall extends Structure {
 	private int currentLevel;
 	
 	public VerticalWall() {
-		super("Wall", 500, 10, 
+		super("Wall", 500, 5, 
 				Config.getTextureManager().getTextureByKey("wall_vertical_construction"),
 				Config.getTextureManager().getTextureByKey("wall_vertical_active"),
 				Config.getTextureManager().getTextureByKey("wall_vertical_destroyed"));		

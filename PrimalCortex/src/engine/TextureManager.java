@@ -28,6 +28,14 @@ public class TextureManager {
 	    	Image wall_vertical_active = new Image("wall_vertical.png");
 	    	Image wall_horizontal_construction = new Image("wall_horizontal_construction.png");
 	    	Image wall_horizontal_active = new Image("wall_horizontal.png");
+	    	Image wall_topleft_active = new Image("wall_topleft.png");
+	    	Image wall_topleft_construction = new Image("wall_topleft_construction.png");
+	    	Image wall_topright_active = new Image("wall_topright.png");
+	    	Image wall_topright_construction = new Image("wall_topright_construction.png");
+	    	Image wall_bottomright_active = new Image("wall_bottomright.png");
+	    	Image wall_bottomright_construction = new Image("wall_bottomright_construction.png");
+	    	Image wall_bottomleft_active = new Image("wall_bottomleft.png");
+	    	Image wall_bottomleft_construction = new Image("wall_bottomleft_construction.png");
 	    	
 	    	Image button = new Image("button.png");
 	    	Image buttonActive = new Image("button-active.png");
@@ -56,6 +64,14 @@ public class TextureManager {
 	    	addTextureByKey("wall_vertical_active", wall_vertical_active);
 	    	addTextureByKey("wall_horizontal_construction", wall_horizontal_construction);
 	    	addTextureByKey("wall_horizontal_active", wall_horizontal_active);
+	    	addTextureByKey("wall_topleft_active", wall_topleft_active);
+	    	addTextureByKey("wall_topleft_construction", wall_topleft_construction);
+	    	addTextureByKey("wall_topright_active", wall_topright_active);
+	    	addTextureByKey("wall_topright_construction", wall_topright_construction);
+	    	addTextureByKey("wall_bottomright_active", wall_bottomright_active);
+	    	addTextureByKey("wall_bottomright_construction", wall_bottomright_construction);
+	    	addTextureByKey("wall_bottomleft_active", wall_bottomleft_active);
+	    	addTextureByKey("wall_bottomleft_construction", wall_bottomleft_construction);
 	    	
 	    	addTextureByKey("texButton", button);
 	    	addTextureByKey("texButtonActive", buttonActive);

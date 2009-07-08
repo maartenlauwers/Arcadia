@@ -2,16 +2,16 @@ package game.structures;
 
 import engine.Config;
 
-public class HorizontalWall extends Structure {
+public class TopRightWall extends Structure {
 	
 	private final int maxLevel = 10;
 	private int currentLevel;
 	
-	public HorizontalWall() {
+	public TopRightWall() {
 		super("Wall", 500, 5, 
-				Config.getTextureManager().getTextureByKey("wall_horizontal_construction"),
-				Config.getTextureManager().getTextureByKey("wall_horizontal_active"),
-				Config.getTextureManager().getTextureByKey("wall_horizontal_destroyed"));		
+				Config.getTextureManager().getTextureByKey("wall_topright_construction"),
+				Config.getTextureManager().getTextureByKey("wall_topright_active"),
+				Config.getTextureManager().getTextureByKey("wall_topright_destroyed"));		
 		
 		currentLevel = 1;		
 		
