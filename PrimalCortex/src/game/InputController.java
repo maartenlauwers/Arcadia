@@ -1,17 +1,22 @@
 package game;
 
 import game.structures.Barracks;
-import game.structures.BottomLeftWall;
-import game.structures.BottomRightWall;
 import game.structures.EmptyStructure;
 import game.structures.Farm;
-import game.structures.HorizontalWall;
 import game.structures.Hovel;
 import game.structures.Market;
 import game.structures.StructureType;
-import game.structures.TopLeftWall;
-import game.structures.TopRightWall;
-import game.structures.VerticalWall;
+import game.structures.walls.BottomLeftWall;
+import game.structures.walls.BottomRightWall;
+import game.structures.walls.CrossWall;
+import game.structures.walls.HorizontalWall;
+import game.structures.walls.TBottomWall;
+import game.structures.walls.TLeftWall;
+import game.structures.walls.TRightWall;
+import game.structures.walls.TTopWall;
+import game.structures.walls.TopLeftWall;
+import game.structures.walls.TopRightWall;
+import game.structures.walls.VerticalWall;
 
 public class InputController {
 
@@ -146,18 +151,45 @@ public class InputController {
 					constructWallVertical(t);
 				} else {
 					if(north && south && east && west) {
-						// Place a square wall
-						// ...
-					} else if(north && east) {
+						// Place a cross wall
+						constructWallCross(t);
+						
+					} else if (north && south && east) {				// T shape walls start here
+						
+						constructWallTRight(t);
+						
+					} else if (north && south && west) {
+						
+						constructWallTLeft(t);
+						
+					} else if (east && west && north) {
+						
+						constructWallTTop(t);
+						
+					} else if (east && west && south) {
+						
+						constructWallTBottom(t);
+												
+					} else if(north && east) {							// Wall corners here
+						
 						constructWallBottomLeft(t);
+						
 					} else if(north && west) {
+						
 						constructWallBottomRight(t);
+						
 					} else if(south && east) {
+						
 						constructWallTopLeft(t);
+						
 					} else if(south && west) {
+						
 						constructWallTopRight(t);
-					} else if(north && south) {
-						constructWallVertical(t);	
+						
+					} else if(east && west) {
+						
+						constructWallVertical(t);
+										
 					} else {
 						// If all else fails, at least build the wall
 						constructWallVertical(t);
@@ -210,26 +242,50 @@ public class InputController {
 						neighbours++;
 					}
 				}
-			
-				//System.out.println("Neighbours: " + neighbours);
-				//System.out.println("North: " + north + " South: " + south + " West: " + west + " East: " + east);
 				
 				if(neighbours < 2) {
 					constructWallHorizontal(t);
 				} else {
 					if(north && south && east && west) {
-						// Place a square wall
-						// ...
-					} else if(north && east) {
+						// Place a cross wall
+						constructWallCross(t);
+						
+					} else if (north && south && east) {				// T shape walls start here
+						
+						constructWallTRight(t);
+						
+					} else if (north && south && west) {
+						
+						constructWallTLeft(t);
+						
+					} else if (east && west && north) {
+						
+						constructWallTTop(t);
+						
+					} else if (east && west && south) {
+						
+						constructWallTBottom(t);
+						
+					} else if(north && east) {							// Wall corners here
+						
 						constructWallBottomLeft(t);
+						
 					} else if(north && west) {
+						
 						constructWallBottomRight(t);
+						
 					} else if(south && east) {
+						
 						constructWallTopLeft(t);
+						
 					} else if(south && west) {
+						
 						constructWallTopRight(t);
+						
 					} else if(east && west) {
-						constructWallHorizontal(t);	
+						
+						constructWallHorizontal(t);
+											
 					} else {
 						// If all else fails, at least build the wall
 						constructWallHorizontal(t);
@@ -257,6 +313,7 @@ public class InputController {
 		game.updateGUIElements();
 	}
 	
+	// corner walls
 	public void constructWallTopLeft(Tile t) {
 		TopLeftWall w = new TopLeftWall();				
 		t.setStructure(w);
@@ -283,6 +340,50 @@ public class InputController {
 	
 	public void constructWallBottomLeft(Tile t) {
 		BottomLeftWall w = new BottomLeftWall();				
+		t.setStructure(w);
+		game.addStructure(w);
+		kingdom.setWealth(kingdom.getWealth() - w.getCost());
+		game.updateGUIElements();
+	}
+	
+	// T shape walls
+	
+	public void constructWallTTop(Tile t) {
+		TTopWall w = new TTopWall();				
+		t.setStructure(w);
+		game.addStructure(w);
+		kingdom.setWealth(kingdom.getWealth() - w.getCost());
+		game.updateGUIElements();
+	}	
+	
+	public void constructWallTRight(Tile t) {
+		TRightWall w = new TRightWall();				
+		t.setStructure(w);
+		game.addStructure(w);
+		kingdom.setWealth(kingdom.getWealth() - w.getCost());
+		game.updateGUIElements();
+	}	
+	
+	public void constructWallTBottom(Tile t) {
+		TBottomWall w = new TBottomWall();				
+		t.setStructure(w);
+		game.addStructure(w);
+		kingdom.setWealth(kingdom.getWealth() - w.getCost());
+		game.updateGUIElements();
+	}	
+	
+	public void constructWallTLeft(Tile t) {
+		TLeftWall w = new TLeftWall();				
+		t.setStructure(w);
+		game.addStructure(w);
+		kingdom.setWealth(kingdom.getWealth() - w.getCost());
+		game.updateGUIElements();
+	}	
+	
+	// Cross wall
+	
+	public void constructWallCross(Tile t) {
+		CrossWall w = new CrossWall();				
 		t.setStructure(w);
 		game.addStructure(w);
 		kingdom.setWealth(kingdom.getWealth() - w.getCost());

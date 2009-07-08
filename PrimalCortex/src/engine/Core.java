@@ -41,7 +41,7 @@ public class Core extends BasicGame {
 	
     public Core()
     {
-        super("Slick2DPath2Glory - SimpleGame");
+        super("Kings & Castles");
     }
  
     @Override

@@ -24,10 +24,13 @@ public class TextureManager {
 	    	//Image barracks_active = new Image("barracks_active.png");
 	    	Image barracks_construction = new Image("market_active.png");
 	    	Image barracks_active = new Image("market_active.png");
+	    	
+	    	// Walls
 	    	Image wall_vertical_construction = new Image("wall_vertical_construction.png");
 	    	Image wall_vertical_active = new Image("wall_vertical.png");
 	    	Image wall_horizontal_construction = new Image("wall_horizontal_construction.png");
 	    	Image wall_horizontal_active = new Image("wall_horizontal.png");
+	    	// Wall corners
 	    	Image wall_topleft_active = new Image("wall_topleft.png");
 	    	Image wall_topleft_construction = new Image("wall_topleft_construction.png");
 	    	Image wall_topright_active = new Image("wall_topright.png");
@@ -36,6 +39,18 @@ public class TextureManager {
 	    	Image wall_bottomright_construction = new Image("wall_bottomright_construction.png");
 	    	Image wall_bottomleft_active = new Image("wall_bottomleft.png");
 	    	Image wall_bottomleft_construction = new Image("wall_bottomleft_construction.png");
+	    	// Wall T shapes
+	    	Image wall_T_right_active = new Image("wall_T_right.png");
+	    	Image wall_T_right_construction = new Image("wall_T_right_construction.png");
+	    	Image wall_T_bottom_active = new Image("wall_T_bottom.png");
+	    	Image wall_T_bottom_construction = new Image("wall_T_bottom_construction.png");
+	    	Image wall_T_left_active = new Image("wall_T_left.png");
+	    	Image wall_T_left_construction = new Image("wall_T_left_construction.png");
+	    	Image wall_T_top_active = new Image("wall_T_top.png");
+	    	Image wall_T_top_construction = new Image("wall_T_top_construction.png");
+	    	// Wall cross
+	    	Image wall_cross_construction = new Image("wall_cross_construction.png");
+	    	Image wall_cross_active = new Image("wall_cross.png");	    	
 	    	
 	    	Image button = new Image("button.png");
 	    	Image buttonActive = new Image("button-active.png");
@@ -60,10 +75,13 @@ public class TextureManager {
 	    	addTextureByKey("house_active", house_active);
 	    	addTextureByKey("barracks_construction", barracks_construction);
 	    	addTextureByKey("barracks_active", barracks_active);
+	    	
+	    	// Walls
 	    	addTextureByKey("wall_vertical_construction", wall_vertical_construction);
 	    	addTextureByKey("wall_vertical_active", wall_vertical_active);
 	    	addTextureByKey("wall_horizontal_construction", wall_horizontal_construction);
 	    	addTextureByKey("wall_horizontal_active", wall_horizontal_active);
+	    	// Walls corners
 	    	addTextureByKey("wall_topleft_active", wall_topleft_active);
 	    	addTextureByKey("wall_topleft_construction", wall_topleft_construction);
 	    	addTextureByKey("wall_topright_active", wall_topright_active);
@@ -72,6 +90,18 @@ public class TextureManager {
 	    	addTextureByKey("wall_bottomright_construction", wall_bottomright_construction);
 	    	addTextureByKey("wall_bottomleft_active", wall_bottomleft_active);
 	    	addTextureByKey("wall_bottomleft_construction", wall_bottomleft_construction);
+	    	// Walls T shapes
+	    	addTextureByKey("wall_T_right_construction", wall_T_right_construction);
+	    	addTextureByKey("wall_T_right_active", wall_T_right_active);
+	    	addTextureByKey("wall_T_bottom_construction", wall_T_bottom_construction);
+	    	addTextureByKey("wall_T_bottom_active", wall_T_bottom_active);
+	    	addTextureByKey("wall_T_left_construction", wall_T_left_construction);
+	    	addTextureByKey("wall_T_left_active", wall_T_left_active);
+	    	addTextureByKey("wall_T_top_construction", wall_T_top_construction);
+	    	addTextureByKey("wall_T_top_active", wall_T_top_active);	    	
+	    	// Walls cross
+	    	addTextureByKey("wall_cross_construction", wall_cross_construction);
+	    	addTextureByKey("wall_cross_active", wall_cross_active);
 	    	
 	    	addTextureByKey("texButton", button);
 	    	addTextureByKey("texButtonActive", buttonActive);
