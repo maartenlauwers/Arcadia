@@ -9,5 +9,9 @@ public class TRightWall extends Wall {
 				Config.getTextureManager().getTextureByKey("wall_T_right_active"),
 				Config.getTextureManager().getTextureByKey("wall_T_right_destroyed"));				
 
-	}	
+	}
+	
+	public WallType getWallType() {
+		return WallType.T_RIGHT;
+	}
 }

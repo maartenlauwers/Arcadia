@@ -187,27 +187,15 @@ public class Game implements GuiListener, ActionListener {
 		
 		// Wall_vertical
 		heightOffset += 70;
-		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_vertical_active")));
-		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Wall"));
-		newWindow.addWidget(new Label("BuildMenu", 160, heightOffset, "Cost: 500"));			
-		Button buildWallVerticalButton = new Button("BuildMenu", EventActionType.CLOSE, 80, heightOffset + 25, "Build", "BuildWallVertical");
-		buildWallVerticalButton.addGuiListener(this);
-		newWindow.addWidget(buildWallVerticalButton);
-		
-		// border
-		newWindow.addWidget(new PictureBox("BuildMenu", 0, heightOffset + 60, 300, 1, Config.getTextureManager().getTextureByKey("border_horizontal")));
-		
-		// Wall_horizontal
-		heightOffset += 70;
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_horizontal_active")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Wall"));
 		newWindow.addWidget(new Label("BuildMenu", 160, heightOffset, "Cost: 500"));			
-		Button buildWallHorizontalButton = new Button("BuildMenu", EventActionType.CLOSE, 80, heightOffset + 25, "Build", "BuildWallHorizontal");
-		buildWallHorizontalButton.addGuiListener(this);
-		newWindow.addWidget(buildWallHorizontalButton);
+		Button buildWallButton = new Button("BuildMenu", EventActionType.CLOSE, 80, heightOffset + 25, "Build", "BuildWall");
+		buildWallButton.addGuiListener(this);
+		newWindow.addWidget(buildWallButton);
 		
 		// border
-		newWindow.addWidget(new PictureBox("BuildMenu", 0, heightOffset + 60, 300, 1, Config.getTextureManager().getTextureByKey("border_horizontal")));
+		newWindow.addWidget(new PictureBox("BuildMenu", 0, heightOffset + 60, 300, 1, Config.getTextureManager().getTextureByKey("border_horizontal")));			
 		
 		
 		Button closeButton = new Button("BuildMenu", EventActionType.CLOSE, 10, 470, "Close", "CloseBuildMenu");
@@ -216,6 +204,105 @@ public class Game implements GuiListener, ActionListener {
 		
 		windowList.add("BuildMenu", newWindow);
 	}	
+	
+	public void createWallBuildMenu() {
+		Window newWindow = new EmptyWindow("WallBuildMenu", Config.getScreenWidth()/2 - 300, Config.getScreenHeight()/2 - 150, 600, 300);
+		newWindow.addWidget(new Panel("WallBuildMenu", 0, 0, 600, 300, true));
+		
+		//newWindow.addWidget(new Label("WallBuildMenu", 10, 10, "));
+			
+					
+		// border
+		//newWindow.addWidget(new PictureBox("BuildMenu", 0, 40, 300, 1, Config.getTextureManager().getTextureByKey("border_horizontal")));
+		
+		int heightOffset = 20;
+		int widthOffset = 20;
+		
+		// Horizontal wall
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_horizontal_active")));		
+		Button buildWallHorizontalButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildHorizontal");
+		buildWallHorizontalButton.addGuiListener(this);
+		newWindow.addWidget(buildWallHorizontalButton);
+		
+		// Vertical wall
+		widthOffset += 80;
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_vertical_active")));		
+		Button buildWallVerticalButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildVertical");
+		buildWallVerticalButton.addGuiListener(this);
+		newWindow.addWidget(buildWallVerticalButton);
+		
+		// Top left corner wall
+		widthOffset += 80;
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_topleft_active")));		
+		Button buildWallTopLeftButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTopLeft");
+		buildWallTopLeftButton.addGuiListener(this);
+		newWindow.addWidget(buildWallTopLeftButton);
+		
+		// Top right corner wall
+		widthOffset += 80;
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_topright_active")));		
+		Button buildWallTopRightButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTopRight");
+		buildWallTopRightButton.addGuiListener(this);
+		newWindow.addWidget(buildWallTopRightButton);
+		
+		// Bottom right corner wall
+		widthOffset += 80;
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_bottomright_active")));		
+		Button buildWallBottomRightButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildBottomRight");
+		buildWallBottomRightButton.addGuiListener(this);
+		newWindow.addWidget(buildWallBottomRightButton);
+		
+		// Bottom left corner wall
+		widthOffset += 80;
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_bottomleft_active")));		
+		Button buildWallBottomLeftButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildBottomLeft");
+		buildWallBottomLeftButton.addGuiListener(this);
+		newWindow.addWidget(buildWallBottomLeftButton);
+		
+		
+		heightOffset += 100;
+		widthOffset = 20;
+		
+		// T Top		
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_T_top_active")));		
+		Button buildWallTTopButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTTop");
+		buildWallTTopButton.addGuiListener(this);
+		newWindow.addWidget(buildWallTTopButton);			
+		
+		// T Bottom
+		widthOffset += 80;
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_T_bottom_active")));		
+		Button buildWallTBottomButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTBottom");
+		buildWallTBottomButton.addGuiListener(this);
+		newWindow.addWidget(buildWallTBottomButton);	
+		
+		// T Left
+		widthOffset += 80;
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_T_left_active")));		
+		Button buildWallTLeftButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTLeft");
+		buildWallTLeftButton.addGuiListener(this);
+		newWindow.addWidget(buildWallTLeftButton);		
+		
+		// T Right
+		widthOffset += 80;
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_T_right_active")));		
+		Button buildWallTRightButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTRight");
+		buildWallTRightButton.addGuiListener(this);
+		newWindow.addWidget(buildWallTRightButton);	
+		
+		// Cross
+		widthOffset += 80;
+		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_cross_active")));		
+		Button buildWallCrossButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildCross");
+		buildWallCrossButton.addGuiListener(this);
+		newWindow.addWidget(buildWallCrossButton);		
+		
+		Button closeButton = new Button("BuildMenu", EventActionType.CLOSE, 10, 270, "Close", "CloseWallBuildMenu");
+		closeButton.addGuiListener(this);
+		newWindow.addWidget(closeButton);
+		
+		windowList.add("WallBuildMenu", newWindow);
+	}
 	
 	/**
 	 * Handles all received GUI events
@@ -272,15 +359,9 @@ public class Game implements GuiListener, ActionListener {
 						underConstruction = true;					
 					}
 					
-					if(event.getObjectId().equals("BuildWallVertical")) {				
-						inputController.buildWallVertical();
-						underConstruction = true;					
-					}
-					
-					if(event.getObjectId().equals("BuildWallHorizontal")) {				
-						inputController.buildWallHorizontal();
-						underConstruction = true;					
-					}
+					if(event.getObjectId().equals("BuildWall")) {
+						createWallBuildMenu();						
+					}									
 					
 				} else {
 					DialogWindow dw = new DialogWindow("InfoDialog", "", "Another building is already under construction.");
@@ -288,6 +369,63 @@ public class Game implements GuiListener, ActionListener {
 					windowList.add("InfoDialog", dw);	
 				}
 			}				
+		}
+		
+		if(winId.equals("WallBuildMenu")) {
+			if(event.getObjectId().equals("CloseWallBuildMenu")) {
+				windowList.remove("WallBuildMenu");
+			} else {
+				if(!underConstruction) {
+					if(event.getObjectId().equals("WallBuildHorizontal")) {
+						inputController.buildWallHorizontal();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildVertical")) {
+						System.out.println("Vertical wall requested");
+						inputController.buildWallVertical();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildTopLeft")) {
+						inputController.buildWallTopLeft();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildTopRight")) {
+						inputController.buildWallTopRight();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildBottomRight")) {
+						inputController.buildWallBottomRight();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildBottomLeft")) {
+						inputController.buildWallBottomLeft();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildTTop")) {
+						inputController.buildWallTTop();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildTBottom")) {
+						inputController.buildWallTBottom();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildTLeft")) {
+						inputController.buildWallTLeft();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildTRight")) {
+						inputController.buildWallTRight();
+						underConstruction = true;
+					}
+					if(event.getObjectId().equals("WallBuildCross")) {
+						inputController.buildWallCross();
+						underConstruction = true;
+					}
+					
+					// We assume that a build button was clicked, in which case the window may be closed
+					windowList.remove("WallBuildMenu");
+				}
+			}
 		}
 		
 		if(winId.equals("TownInfo")) {

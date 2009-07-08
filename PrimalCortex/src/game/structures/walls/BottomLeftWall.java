@@ -11,4 +11,7 @@ public class BottomLeftWall extends Wall {
 		
 	}
 	
+	public WallType getWallType() {
+		return WallType.BOTTOM_LEFT;
+	}
 }

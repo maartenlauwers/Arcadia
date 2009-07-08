@@ -27,4 +27,6 @@ public abstract class Wall extends Structure {
 	public StructureType getType() {
 		return StructureType.WALL;
 	}
+	
+	public abstract WallType getWallType();
 }

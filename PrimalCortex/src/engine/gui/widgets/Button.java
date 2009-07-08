@@ -150,13 +150,13 @@ public class Button implements Widget {
 	public void draw(Graphics g) {
 		switch(buttonState) {
 		case 1:
-			texture_button.draw(x,y);
+			texture_button.draw(x,y, width, height);
 			break;
 		case 2:
-			texture_button_active.draw(x,y);
+			texture_button_active.draw(x,y, width, height);
 			break;
 		case 3:
-			texture_button_pressed.draw(x,y);
+			texture_button_pressed.draw(x,y, width, height);
 			break;
 		}
 		
@@ -197,8 +197,8 @@ public class Button implements Widget {
 	 */
 	public boolean hasFocus(int mouseX, int mouseY) {
 				
-		if(mouseX > x && mouseX < x + texture_button.getWidth()) {
-			if(mouseY > y && mouseY < y + texture_button.getHeight()) {
+		if(mouseX > x && mouseX < x + width) {
+			if(mouseY > y && mouseY < y + height) {
 				return true;
 			}
 		}	

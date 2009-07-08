@@ -9,4 +9,8 @@ public class BottomRightWall extends Wall {
 				Config.getTextureManager().getTextureByKey("wall_bottomright_active"),
 				Config.getTextureManager().getTextureByKey("wall_bottomright_destroyed"));		
 	}
+	
+	public WallType getWallType() {
+		return WallType.BOTTOM_RIGHT;
+	}
 }

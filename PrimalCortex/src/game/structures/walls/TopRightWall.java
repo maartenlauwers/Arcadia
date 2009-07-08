@@ -10,4 +10,8 @@ public class TopRightWall extends Wall {
 				Config.getTextureManager().getTextureByKey("wall_topright_destroyed"));				
 
 	}
+	
+	public WallType getWallType() {
+		return WallType.TOP_RIGHT;
+	}
 }

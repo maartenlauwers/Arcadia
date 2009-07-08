@@ -9,4 +9,8 @@ public class TopLeftWall extends Wall {
 				Config.getTextureManager().getTextureByKey("wall_topleft_active"),
 				Config.getTextureManager().getTextureByKey("wall_topleft_destroyed"));			
 	}
+	
+	public WallType getWallType() {
+		return WallType.TOP_LEFT;
+	}
 }

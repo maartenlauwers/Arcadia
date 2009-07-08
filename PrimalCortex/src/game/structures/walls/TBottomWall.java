@@ -10,4 +10,8 @@ public class TBottomWall extends Wall {
 				Config.getTextureManager().getTextureByKey("wall_T_bottom_destroyed"));		
 	
 	}
+	
+	public WallType getWallType() {
+		return WallType.T_BOTTOM;
+	}
 }

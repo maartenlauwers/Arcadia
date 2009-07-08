@@ -9,4 +9,8 @@ public class CrossWall extends Wall {
 				Config.getTextureManager().getTextureByKey("wall_cross_active"),
 				Config.getTextureManager().getTextureByKey("wall_cross_destroyed"));		
 	}
+	
+	public WallType getWallType() {
+		return WallType.CROSS;
+	}
 }

@@ -17,6 +17,8 @@ import game.structures.walls.TTopWall;
 import game.structures.walls.TopLeftWall;
 import game.structures.walls.TopRightWall;
 import game.structures.walls.VerticalWall;
+import game.structures.walls.Wall;
+import game.structures.walls.WallType;
 
 public class InputController {
 
@@ -108,95 +110,11 @@ public class InputController {
 	public void buildWallVertical() {
 		for(Tile t : localMap.getTileList()) {
 			if(t.isSelected()) {
-				
-				
-				boolean north = false;
-				boolean south = false;
-				boolean west = false;
-				boolean east = false;
-				int neighbours = 0;
-				
-				// First, check whether this tile could be a corner tile
-				Tile tileNorth = localMap.getTileNorthOf(t);
-				Tile tileSouth = localMap.getTileSouthOf(t);
-				Tile tileEast = localMap.getTileEastOf(t);
-				Tile tileWest = localMap.getTileWestOf(t);
-				
-				if(tileNorth != null) {
-					if(tileNorth.getStructure().getType().equals(StructureType.WALL)) {
-						north = true;
-						neighbours++;
-					}
-				}
-				if(tileSouth != null) {
-					if(tileSouth.getStructure().getType().equals(StructureType.WALL)) {
-						south = true;
-						neighbours++;
-					}
-				}
-				if(tileEast != null) {
-					if(tileEast.getStructure().getType().equals(StructureType.WALL)) {
-						east = true;
-						neighbours++;
-					}
-				}
-				if(tileWest != null) {
-					if(tileWest.getStructure().getType().equals(StructureType.WALL)) {
-						west = true;
-						neighbours++;
-					}
-				}
-				
-				if(neighbours < 2) {
-					constructWallVertical(t);
-				} else {
-					if(north && south && east && west) {
-						// Place a cross wall
-						constructWallCross(t);
-						
-					} else if (north && south && east) {				// T shape walls start here
-						
-						constructWallTRight(t);
-						
-					} else if (north && south && west) {
-						
-						constructWallTLeft(t);
-						
-					} else if (east && west && north) {
-						
-						constructWallTTop(t);
-						
-					} else if (east && west && south) {
-						
-						constructWallTBottom(t);
-												
-					} else if(north && east) {							// Wall corners here
-						
-						constructWallBottomLeft(t);
-						
-					} else if(north && west) {
-						
-						constructWallBottomRight(t);
-						
-					} else if(south && east) {
-						
-						constructWallTopLeft(t);
-						
-					} else if(south && west) {
-						
-						constructWallTopRight(t);
-						
-					} else if(east && west) {
-						
-						constructWallVertical(t);
-										
-					} else {
-						// If all else fails, at least build the wall
-						constructWallVertical(t);
-					}
-				}
-				
-			
+				VerticalWall w = new VerticalWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();								
 			}
 		}	
 		
@@ -204,190 +122,133 @@ public class InputController {
 	
 	public void buildWallHorizontal() {
 		for(Tile t : localMap.getTileList()) {
-			if(t.isSelected()) {
-				
-				boolean north = false;
-				boolean south = false;
-				boolean west = false;
-				boolean east = false;
-				int neighbours = 0;
-				
-				// First, check whether this tile could be a corner tile
-				Tile tileNorth = localMap.getTileNorthOf(t);
-				Tile tileSouth = localMap.getTileSouthOf(t);
-				Tile tileEast = localMap.getTileEastOf(t);
-				Tile tileWest = localMap.getTileWestOf(t);
-				
-				if(tileNorth != null) {
-					if(tileNorth.getStructure().getType().equals(StructureType.WALL)) {
-						north = true;
-						neighbours++;
-					}
-				}
-				if(tileSouth != null) {
-					if(tileSouth.getStructure().getType().equals(StructureType.WALL)) {
-						south = true;
-						neighbours++;
-					}
-				}
-				if(tileEast != null) {
-					if(tileEast.getStructure().getType().equals(StructureType.WALL)) {
-						east = true;
-						neighbours++;
-					}
-				}
-				if(tileWest != null) {
-					if(tileWest.getStructure().getType().equals(StructureType.WALL)) {
-						west = true;
-						neighbours++;
-					}
-				}
-				
-				if(neighbours < 2) {
-					constructWallHorizontal(t);
-				} else {
-					if(north && south && east && west) {
-						// Place a cross wall
-						constructWallCross(t);
-						
-					} else if (north && south && east) {				// T shape walls start here
-						
-						constructWallTRight(t);
-						
-					} else if (north && south && west) {
-						
-						constructWallTLeft(t);
-						
-					} else if (east && west && north) {
-						
-						constructWallTTop(t);
-						
-					} else if (east && west && south) {
-						
-						constructWallTBottom(t);
-						
-					} else if(north && east) {							// Wall corners here
-						
-						constructWallBottomLeft(t);
-						
-					} else if(north && west) {
-						
-						constructWallBottomRight(t);
-						
-					} else if(south && east) {
-						
-						constructWallTopLeft(t);
-						
-					} else if(south && west) {
-						
-						constructWallTopRight(t);
-						
-					} else if(east && west) {
-						
-						constructWallHorizontal(t);
-											
-					} else {
-						// If all else fails, at least build the wall
-						constructWallHorizontal(t);
-					}
-				}
-				
+			if(t.isSelected()) {				
+				HorizontalWall w = new HorizontalWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();				
 			}
 		}	
 		
 	}
 	
-	public void constructWallVertical(Tile t) {
-		VerticalWall w = new VerticalWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
-	}
 	
-	public void constructWallHorizontal(Tile t) {
-		HorizontalWall w = new HorizontalWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
-	}
 	
 	// corner walls
-	public void constructWallTopLeft(Tile t) {
-		TopLeftWall w = new TopLeftWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
+	
+	public void buildWallTopLeft() {
+		for(Tile t : localMap.getTileList()) {
+			if(t.isSelected()) {				
+				TopLeftWall w = new TopLeftWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();		
+			}
+		}			
 	}
 	
-	public void constructWallTopRight(Tile t) {
-		TopRightWall w = new TopRightWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
+	public void buildWallTopRight() {
+		for(Tile t : localMap.getTileList()) {
+			if(t.isSelected()) {				
+				TopRightWall w = new TopRightWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();	
+			}
+		}			
 	}
 	
-	public void constructWallBottomRight(Tile t) {
-		BottomRightWall w = new BottomRightWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
+	
+	public void buildWallBottomRight() {
+		for(Tile t : localMap.getTileList()) {
+			if(t.isSelected()) {				
+				BottomRightWall w = new BottomRightWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();
+			}
+		}			
 	}
 	
-	public void constructWallBottomLeft(Tile t) {
-		BottomLeftWall w = new BottomLeftWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
+	public void buildWallBottomLeft() {
+		for(Tile t : localMap.getTileList()) {
+			if(t.isSelected()) {				
+				BottomLeftWall w = new BottomLeftWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();
+			}
+		}			
 	}
+	
 	
 	// T shape walls
 	
-	public void constructWallTTop(Tile t) {
-		TTopWall w = new TTopWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
-	}	
+	public void buildWallTTop() {
+		for(Tile t : localMap.getTileList()) {
+			if(t.isSelected()) {				
+				TTopWall w = new TTopWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();
+			}
+		}			
+	}
 	
-	public void constructWallTRight(Tile t) {
-		TRightWall w = new TRightWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
-	}	
+	public void buildWallTRight() {
+		for(Tile t : localMap.getTileList()) {
+			if(t.isSelected()) {				
+				TRightWall w = new TRightWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();
+			}
+		}			
+	}
 	
-	public void constructWallTBottom(Tile t) {
-		TBottomWall w = new TBottomWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
-	}	
-	
-	public void constructWallTLeft(Tile t) {
-		TLeftWall w = new TLeftWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
-	}	
+	public void buildWallTBottom() {
+		for(Tile t : localMap.getTileList()) {
+			if(t.isSelected()) {				
+				TBottomWall w = new TBottomWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();
+			}
+		}			
+	}
+
+	public void buildWallTLeft() {
+		for(Tile t : localMap.getTileList()) {
+			if(t.isSelected()) {				
+				TLeftWall w = new TLeftWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();
+			}
+		}			
+	}
 	
 	// Cross wall
 	
-	public void constructWallCross(Tile t) {
-		CrossWall w = new CrossWall();				
-		t.setStructure(w);
-		game.addStructure(w);
-		kingdom.setWealth(kingdom.getWealth() - w.getCost());
-		game.updateGUIElements();
+	public void buildWallCross() {
+		for(Tile t : localMap.getTileList()) {
+			if(t.isSelected()) {				
+				CrossWall w = new CrossWall();				
+				t.setStructure(w);
+				game.addStructure(w);
+				kingdom.setWealth(kingdom.getWealth() - w.getCost());
+				game.updateGUIElements();
+			}
+		}			
 	}	
 		
 }

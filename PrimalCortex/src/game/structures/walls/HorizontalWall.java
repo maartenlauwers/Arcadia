@@ -10,4 +10,8 @@ public class HorizontalWall extends Wall {
 				Config.getTextureManager().getTextureByKey("wall_horizontal_destroyed"));		
 		
 	}
+	
+	public WallType getWallType() {
+		return WallType.HORIZONTAL;
+	}
 }

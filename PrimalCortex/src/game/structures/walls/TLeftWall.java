@@ -10,4 +10,7 @@ public class TLeftWall extends Wall {
 				Config.getTextureManager().getTextureByKey("wall_T_left_destroyed"));				
 	}
 	
+	public WallType getWallType() {
+		return WallType.T_LEFT;
+	}
 }

@@ -10,5 +10,9 @@ public class VerticalWall extends Wall {
 				Config.getTextureManager().getTextureByKey("wall_vertical_active"),
 				Config.getTextureManager().getTextureByKey("wall_vertical_destroyed"));					
 
-	}	
+	}
+	
+	public WallType getWallType() {
+		return WallType.VERTICAL;
+	}
 }
