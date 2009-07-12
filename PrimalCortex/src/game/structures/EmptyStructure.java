@@ -9,9 +9,9 @@ public class EmptyStructure extends Structure {
 	
 	public EmptyStructure() {
 		super("Grass", 0, 0, 
-				Config.getTextureManager().getTextureByKey("grass"),
-				Config.getTextureManager().getTextureByKey("grass"),
-				Config.getTextureManager().getTextureByKey("grass"));	
+				Config.getTextureManager().getTextureByKey("transparent"),
+				Config.getTextureManager().getTextureByKey("transparent"),
+				Config.getTextureManager().getTextureByKey("transparent"));	
 		
 		setState(new ConstructionState(this));			
 	}

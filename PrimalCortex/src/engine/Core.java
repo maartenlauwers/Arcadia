@@ -24,9 +24,9 @@ import engine.gui.widgets.Panel;
 
 import game.Game;
 import game.InputController;
-import game.LocalMap;
-import game.Map;
 import game.Tile;
+import game.map.LocalMap;
+import game.map.Map;
  
 public class Core extends BasicGame {
  	
@@ -37,7 +37,7 @@ public class Core extends BasicGame {
 	private boolean isKeyDown;
 		
 	private Game game;
-	
+	private Camera camera;
 	
     public Core()
     {
@@ -49,7 +49,7 @@ public class Core extends BasicGame {
 			throws SlickException {
      	
     	TextureManager textureManager = new TextureManager();
-    	    	    	
+    	
     	new Config(1024, 768, textureManager);   
     	      	    	  
     	game = new Game(this);
@@ -61,6 +61,8 @@ public class Core extends BasicGame {
     	this.isKeyDown = false;
     	
     	gc.setShowFPS(false);
+    	
+    	camera = new Camera(Config.getScreenWidth(), Config.getScreenHeight());    	
     }
  
     @Override
@@ -72,6 +74,85 @@ public class Core extends BasicGame {
     	 
     	int mouseX = input.getMouseX();
     	int mouseY = input.getMouseY();
+    	
+    	
+    	// Check map movement
+    	if (game.onLocalMap() == false) {
+    		/*
+    		if(mouseX < 10) {
+    			game.getWorldMap().moveMapLeft();
+    			//camera.moveCameraLeft(1);
+    		}
+    		if(mouseX > camera.getCameraScreenWidth() - 10) {
+    			//camera.moveCameraRight(1);
+    			game.getWorldMap().moveMapRight();
+    		}
+    		if(mouseY < 10) {
+    			//camera.moveCameraUp(1);
+    			game.getWorldMap().moveMapUp();
+    		}
+    		if(mouseY > camera.getCameraScreenHeight() - 10) {
+    			//camera.moveCameraDown(1);
+    			game.getWorldMap().moveMapDown();
+    		}
+    		*/
+    		
+    		if (input.isKeyDown(input.KEY_LEFT)) {
+        		if(isKeyDown == false) {
+        			game.getWorldMap().moveMapLeft();
+        		}
+        		isKeyDown = true;
+        	}
+        	
+        	if (!input.isKeyDown(input.KEY_LEFT)) {
+        		isKeyDown = false;
+        	}
+        	
+        	if (input.isKeyDown(input.KEY_RIGHT)) {
+        		if(isKeyDown == false) {
+        			game.getWorldMap().moveMapRight();
+        		}
+        		isKeyDown = true;
+        	}
+        	
+        	if (!input.isKeyDown(input.KEY_RIGHT)) {
+        		isKeyDown = false;
+        	}
+        	
+        	if (input.isKeyDown(input.KEY_UP)) {
+        		if(isKeyDown == false) {
+        			game.getWorldMap().moveMapUp();
+        		}
+        		isKeyDown = true;
+        	}
+        	
+        	if (!input.isKeyDown(input.KEY_UP)) {
+        		isKeyDown = false;
+        	}
+        	
+        	if (input.isKeyDown(input.KEY_DOWN)) {
+        		if(isKeyDown == false) {
+        			game.getWorldMap().moveMapUp();
+        		}
+        		isKeyDown = true;
+        	}
+        	
+        	if (!input.isKeyDown(input.KEY_DOWN)) {
+        		isKeyDown = false;
+        	}
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     	
     	
     	if (input.isKeyDown(input.KEY_F)) {
@@ -127,16 +208,18 @@ public class Core extends BasicGame {
     public void render(GameContainer gc, Graphics g) 
 			throws SlickException 
     {
-    	   
-    	for(Tile t : game.getLocalMap().getTileList()) {
-    		t.draw();    		    	
-    	}    	     
     	
-    	for(Tile t: game.getLocalMap().getTileList()) {
-    		if(t.isSelected()) {    			    			
-    			g.drawRect(t.getX(), t.getY(), 64, 64);
-    		}
-    	}
+    	if(game.onLocalMap()) {
+    		game.getLocalMap().draw();
+    		
+    		for(Tile t: game.getLocalMap().getTileList()) {
+        		if(t.isSelected()) {    			    			
+        			g.drawRect(t.getX(), t.getY(), 64, 64);
+        		}
+        	}
+    	} else {
+    		game.getWorldMap().draw();
+    	}    	    	    	   
     	
     	game.drawGUIElements(g);
     }           

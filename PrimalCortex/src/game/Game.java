@@ -18,12 +18,16 @@ import engine.gui.EmptyWindow;
 import engine.gui.EventActionType;
 import engine.gui.GuiEvent;
 import engine.gui.GuiListener;
+import engine.gui.PictureDialogWindow;
 import engine.gui.QuestionWindow;
 import engine.gui.Window;
 import engine.gui.widgets.Button;
 import engine.gui.widgets.Label;
 import engine.gui.widgets.Panel;
 import engine.gui.widgets.PictureBox;
+import game.map.LocalMap;
+import game.map.Map;
+import game.map.WorldMap;
 import game.structures.Farm;
 import game.structures.Hovel;
 import game.structures.Structure;
@@ -35,7 +39,11 @@ public class Game implements GuiListener, ActionListener {
 	private TextureManager textureManager;
 	
 	private Kingdom kingdom;
+	
 	private Map localMap;
+	private Map worldMap;
+	private boolean localMapActive;
+	
 	private InputController inputController;
 	private List<Structure> structureList;
 	
@@ -63,12 +71,27 @@ public class Game implements GuiListener, ActionListener {
 		windowList = new DualMap();
 		
 		// Init the local map
-    	localMap = new LocalMap(Config.getScreenWidth(), Config.getScreenHeight());
+    	localMap = new LocalMap(Config.getScreenWidth(), Config.getScreenHeight(), Config.getScreenWidth()/64 + 1, (Config.getScreenHeight() - 60)/64 + 1);
+    	localMapActive = true;
     	
-    	for(int i=0; i<Config.getScreenWidth(); i += 64) {
-    		for (int j=30; j<Config.getScreenWidth() - 30; j += 64) {
+    	for(int i=0; i<localMap.getNrTilesHorizontal()*64; i += 64) {
+    		for (int j=30; j<localMap.getNrTilesVertical()*64; j += 64) {
     			localMap.addTile(new Tile(textureManager.getTextureByKey("grass"), i, j, 64, 64));   //TODO: hardcoded tile width and height 			
     		}
+    	}
+    	
+    	worldMap = new WorldMap(Config.getScreenWidth(), Config.getScreenHeight(), 20, 20, 64, 64);
+    	
+    	for(int i=0; i<worldMap.getNrTilesVertical(); i++) {
+    		for (int j=0; j<worldMap.getNrTilesHorizontal(); j++) {
+    			//worldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), i, j, 64, 64));   //TODO: hardcoded tile width and height
+    			
+    			if(i == 5 && j == 3) {
+    				worldMap.addTile(new Tile(textureManager.getTextureByKey("market_active"), j, i, 64, 64));   //TODO: hardcoded tile width and height
+    			} else {
+    				worldMap.addTile(new Tile(textureManager.getTextureByKey("dirt"), j, i, 64, 64));   //TODO: hardcoded tile width and height
+    			}
+    		} 
     	}
     	
     	inputController = new InputController(this);      	
@@ -78,10 +101,20 @@ public class Game implements GuiListener, ActionListener {
     	
 		gameTimer = new Timer(1000, this);
 		gameTimer.start();
+		
+		createWelcomeDialog();
 	}
 		
 	public LocalMap getLocalMap() {
 		return (LocalMap)localMap;
+	}
+	
+	public WorldMap getWorldMap() {
+		return (WorldMap)worldMap;
+	}
+	
+	public boolean onLocalMap() {
+		return localMapActive;
 	}
 	
 	public Kingdom getKingdom() {
@@ -90,6 +123,10 @@ public class Game implements GuiListener, ActionListener {
 	
 	public void addStructure(Structure s) {
 		structureList.add(s);
+	}
+	
+	public void removeStructure(Structure s) {
+		structureList.remove(s);
 	}
 	
 	public List getStructures() {
@@ -120,6 +157,12 @@ public class Game implements GuiListener, ActionListener {
 		}
 	}
 	
+	public void createWelcomeDialog() {		
+		PictureDialogWindow pdw = new PictureDialogWindow("IntroDialog", "Intro", "Greetings. I am Ellune, goddess of Arcadia. /n" +
+															"I am here to guide you in your task to /nrule the land.", 400, 100, textureManager.getTextureByKey("sorceress"), 75, 75);
+		pdw.addGuiListener(this);
+		windowList.add("IntroDialog", pdw);	
+	}
 	/**
 	 * Creates the build menu
 	 */
@@ -206,8 +249,8 @@ public class Game implements GuiListener, ActionListener {
 	}	
 	
 	public void createWallBuildMenu() {
-		Window newWindow = new EmptyWindow("WallBuildMenu", Config.getScreenWidth()/2 - 300, Config.getScreenHeight()/2 - 150, 600, 300);
-		newWindow.addWidget(new Panel("WallBuildMenu", 0, 0, 600, 300, true));
+		Window newWindow = new EmptyWindow("WallBuildMenu", Config.getScreenWidth()/2 - 250, Config.getScreenHeight()/2 - 120, 500, 240);
+		newWindow.addWidget(new Panel("WallBuildMenu", 0, 0, 500, 240, true));
 		
 		//newWindow.addWidget(new Label("WallBuildMenu", 10, 10, "));
 			
@@ -297,7 +340,7 @@ public class Game implements GuiListener, ActionListener {
 		buildWallCrossButton.addGuiListener(this);
 		newWindow.addWidget(buildWallCrossButton);		
 		
-		Button closeButton = new Button("BuildMenu", EventActionType.CLOSE, 10, 270, "Close", "CloseWallBuildMenu");
+		Button closeButton = new Button("BuildMenu", EventActionType.CLOSE, 10, 210, "Close", "CloseWallBuildMenu");
 		closeButton.addGuiListener(this);
 		newWindow.addWidget(closeButton);
 		
@@ -310,6 +353,12 @@ public class Game implements GuiListener, ActionListener {
 	public void eventReceived(GuiEvent event) { 		
 		String winId = event.getParentId();				
 		
+		
+		if(winId.equals("IntroDialog")) {
+			if(event.getObjectId().equals("Ok")) {
+				windowList.remove("IntroDialog");
+			}
+		}
 		/*
 		 * Statusbar events
 		 */
@@ -325,12 +374,26 @@ public class Game implements GuiListener, ActionListener {
 				
 				createBuildMenu();						
 			}
+			
+			if(event.getObjectId().equals("Destroy")) {
+				
+				inputController.destroyStructure();
+			}
 		}
 		
 		if(winId.equals("InfoBar")) {
 			if(event.getObjectId().equals("TownInfo")) {
 				
 				createTownInfoView();
+			}
+			if(event.getObjectId().equals("WorldMap")) {
+				if(localMapActive) {
+					localMapActive = false;	
+				} else {
+					localMapActive = true;
+				}
+								
+				
 			}
 		}
 		

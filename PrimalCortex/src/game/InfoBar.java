@@ -42,6 +42,9 @@ public class InfoBar {
 		TrueTypeFont ttf = Config.getCurrentFont();						
 		structureBar = new ProgressBar("InfoBar", "", 10, 5, 300, 20, Config.getTextureManager().getTextureByKey("progressbar"), 0);				
 
+		Button worldMapButton = new Button("InfoBar", EventActionType.OTHER, Config.getScreenWidth() - 240, 5, "World map", "WorldMap");
+		worldMapButton.addGuiListener(game);
+		
 		Button infoButton = new Button("InfoBar", EventActionType.OTHER, Config.getScreenWidth() - 120, 5, "Town info", "TownInfo");
 		infoButton.addGuiListener(game);
 		
@@ -51,6 +54,7 @@ public class InfoBar {
 		
 		window.addWidget(panel);		
 		window.addWidget(structureBar);
+		window.addWidget(worldMapButton);
 		window.addWidget(infoButton);
 		window.addWidget(border);
 	}	

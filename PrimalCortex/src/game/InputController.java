@@ -1,5 +1,6 @@
 package game;
 
+import game.map.Map;
 import game.structures.Barracks;
 import game.structures.EmptyStructure;
 import game.structures.Farm;
@@ -249,6 +250,21 @@ public class InputController {
 				game.updateGUIElements();
 			}
 		}			
+	}
+
+	public void destroyStructure() {
+		for(Tile t: localMap.getTileList()) {
+			if(t.isSelected()) {
+				
+				if(t.getStructure().getType() != StructureType.GRASS) {
+					t.setStructure(new EmptyStructure());
+					game.removeStructure(t.getStructure());
+					game.updateGUIElements();
+				}
+			
+			}
+		}
+		
 	}	
 		
 }

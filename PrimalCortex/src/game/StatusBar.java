@@ -27,8 +27,8 @@ public class StatusBar {
 	private PictureBox populationPicture;
 	private PictureBox foodPicture;
 	private Label populationLabel;
-	private Button btnBuild;
-	private Button btnHelp;
+	private Button btnDestroy;
+	private Button btnBuild;	
 	private Button btnQuit;		
 	
 	private int x;
@@ -65,7 +65,9 @@ public class StatusBar {
 		
 		offset = offset + ttf.getWidth(foodLabel.getText()) + 25;
 		trainLabel = new Label("Statusbar", offset , 5, "");
-					
+							
+		btnDestroy = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 360, 5, "Destroy", "Destroy");
+		btnDestroy.addGuiListener(game);
 		btnBuild = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 240, 5, "Build", "Build");
 		btnBuild.addGuiListener(game);
 		btnQuit = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 120, 5, "Quit", "Quit");
@@ -87,6 +89,7 @@ public class StatusBar {
 		window.addWidget(trainLabel);
 		//window.addWidget(btnWorldMap);
 		//window.addWidget(btnHelp);
+		window.addWidget(btnDestroy);
 		window.addWidget(btnBuild);
 		window.addWidget(btnQuit);
 		window.addWidget(border);

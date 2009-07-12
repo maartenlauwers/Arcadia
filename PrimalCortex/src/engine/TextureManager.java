@@ -14,6 +14,9 @@ public class TextureManager {
 			
 		try {
 			Image grass = new Image("grass.png");
+			Image dirt = new Image("dirt.png");
+			Image transparent = new Image("transparent.png");
+			
 			Image farm_construction = new Image("farm_construction2.png");
 	    	Image farm_active = new Image("farm_active2.png");
 	    	Image market_construction = new Image("market_construction.png");
@@ -65,8 +68,12 @@ public class TextureManager {
 	    	Image population_icon = new Image("population_icon.png");
 	    	Image food_icon = new Image("food_icon.png");
 	    	Image sword_and_shield = new Image("sword_and_shield.png");
+	    	Image sorceress = new Image("sorceress.gif");
 	    	
 	    	addTextureByKey("grass", grass);
+	    	addTextureByKey("dirt", dirt);
+	    	addTextureByKey("transparent", transparent);
+	    	
 	    	addTextureByKey("farm_construction", farm_construction);
 	    	addTextureByKey("farm_active", farm_active);
 	    	addTextureByKey("market_construction", market_construction);
@@ -115,6 +122,7 @@ public class TextureManager {
 	    	addTextureByKey("population_icon", population_icon);
 	    	addTextureByKey("food_icon", food_icon);
 	    	addTextureByKey("sword_and_shield", sword_and_shield);
+	    	addTextureByKey("sorceress", sorceress);
 	    	
 		} catch (SlickException e) {			
 			e.printStackTrace();
