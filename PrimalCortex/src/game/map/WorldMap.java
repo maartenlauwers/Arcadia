@@ -63,38 +63,20 @@ public class WorldMap extends Map {
 	
 	public void moveMapRight() {
 		if(offsetX < super.getNrTilesHorizontal() - (Config.getScreenWidth()/tileWidth) + 1) {
-			/*
-			for(int y = offsetY; y < offsetY + (Config.getScreenHeight()/tileHeight); y++) {
-				map[offsetX][y] = 0;
-				map[offsetX + (Config.getScreenWidth()/tileWidth)][y] = 1;
-			}
-			*/
 			offsetX++;
 		}
 		
 	}
 	
 	public void moveMapLeft() {
-		if(offsetX > 0) {
-			/*
-			for(int y = offsetY; y < offsetY + (Config.getScreenHeight()/tileHeight); y++) {
-				map[offsetX + ((Config.getScreenWidth()/tileWidth) - 1)][y] = 0;
-				map[offsetX - 1][y] = 1;
-			}
-			*/
+		if(offsetX > 0) {			
 			offsetX--;	
 		}
 		
 	}
 	
 	public void moveMapUp() {
-		if(offsetY > 0) {
-			/*
-			for(int x = offsetX; x < offsetX + (Config.getScreenWidth()/tileWidth); x++) {
-				map[x][offsetY + ((Config.getScreenHeight()/tileHeight) - 1)] = 0;
-				map[x][offsetY - 1] = 1;
-			}
-			*/
+		if(offsetY > 0) {			
 			offsetY--;
 		}
 		
@@ -102,74 +84,57 @@ public class WorldMap extends Map {
 	
 	public void moveMapDown() {		
 		if(offsetY < super.getNrTilesVertical() - (Config.getScreenHeight()/tileHeight) + 1) {
-			/*
-			for(int x = offsetX; x < offsetX + (Config.getScreenWidth()/tileWidth); x++) {
-				map[x][offsetY] = 0;
-				map[x][offsetY + (Config.getScreenHeight()/tileHeight)] = 1;
-			}
-			*/
 			offsetY++;
 		}
 		
-	}
-	
-	public void printMap() {
-		
-		StringBuffer sb = new StringBuffer();
-		for(int j=0; j<100; j++) {
-			for(int i=0; i<100; i++) {
-				sb.append(map[i][j] + ", ");				
-			}
-			
-			System.out.println(sb.toString());
-			sb = new StringBuffer();
-		}
-	}
+	}	
 	
 	public void draw() {
 		
-		int nrTilesHorizontal = super.getNrTilesHorizontal();
-		List<Tile> tileList = super.getTileList();		
-		List<Tile> tileListCopy = new ArrayList<Tile>();		
-		
 		int[] requiredIndices = new int[nrHorizontalTilesOnScreen * nrVerticalTilesOnScreen];
-		int index = 0;
 		
-		// Fetch and draw only the visible tiles					
-		int firstIndex = (nrTilesHorizontal * offsetY) + offsetX;					
-		int lengthToNextRow = nrTilesHorizontal;												
+		int nrTilesHorizontal = super.getNrTilesHorizontal();		
+		int lengthToNextRow = nrTilesHorizontal;	
 		
-		for(int i=firstIndex; i<nrVerticalTilesOnScreen*lengthToNextRow; i += lengthToNextRow) {			
-			for(int j=i; j<(i + nrHorizontalTilesOnScreen); j++) {				
-				requiredIndices[index] = j;
-				index++;
-			}	
-		}
-								
+		List<Tile> tileList = super.getTileList();				
+		List<Tile> tileListCopy = new ArrayList<Tile>();		
+							
+		int startIndex = offsetX + (offsetY * nrTilesHorizontal);		
+					
+		int index = 0;		
+		
+		int counter = 0;
+		int i = startIndex;
+		while(counter <= 10) {
+			for(int j=i; j<i+nrHorizontalTilesOnScreen; j++) {
+				requiredIndices[index] = j;				
+				index++;				
+			}
+			i += lengthToNextRow;
+			counter++;
+		}				
+		
+		
 		for(int a=0; a<requiredIndices.length; a++) {				
 			Tile t = tileList.get(requiredIndices[a]);
 			tileListCopy.add(t);
-		}
-		
-		
-		int horizontalTilesChecked = 0;
-		int verticalTilesChecked = 0;
-		for(int k=0; k<tileListCopy.size(); k++) {
-			
-			Tile t = tileListCopy.get(k);
-			t.setX(horizontalTilesChecked*64);
-			t.setY(verticalTilesChecked*64);
-			
-			horizontalTilesChecked++;
-			if(horizontalTilesChecked > nrHorizontalTilesOnScreen) {
-				horizontalTilesChecked = 0;
-				verticalTilesChecked++;
-			}						
 		}		
 		
+		
+		int horTilesChecked = 0;
+		int verTilesChecked = 0;
 		for(Tile t : tileListCopy) {
+			t.setX(horTilesChecked*64);
+			t.setY(verTilesChecked*64 + 30);
+			
+			horTilesChecked++;
+			if(horTilesChecked == nrHorizontalTilesOnScreen) {
+				horTilesChecked = 0;
+				verTilesChecked++;
+			}
 			t.draw();
-		}						
+		}
+					
 	}
 }
 

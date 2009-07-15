@@ -35,7 +35,11 @@ public class Core extends BasicGame {
 	private boolean isLeftMouseDown;
 	private boolean isRightMouseDown;
 	private boolean isKeyDown;
-		
+	private boolean isKeyLeftDown;
+	private boolean isKeyRightDown;
+	private boolean isKeyUpDown;
+	private boolean isKeyDownDown;
+	
 	private Game game;
 	private Camera camera;
 	
@@ -98,47 +102,47 @@ public class Core extends BasicGame {
     		*/
     		
     		if (input.isKeyDown(input.KEY_LEFT)) {
-        		if(isKeyDown == false) {
+        		if(isKeyLeftDown == false) {
         			game.getWorldMap().moveMapLeft();
         		}
-        		isKeyDown = true;
+        		isKeyLeftDown = true;
         	}
         	
         	if (!input.isKeyDown(input.KEY_LEFT)) {
-        		isKeyDown = false;
+        		isKeyLeftDown = false;
         	}
         	
         	if (input.isKeyDown(input.KEY_RIGHT)) {
-        		if(isKeyDown == false) {
+        		if(isKeyRightDown == false) {
         			game.getWorldMap().moveMapRight();
         		}
-        		isKeyDown = true;
+        		isKeyRightDown = true;
         	}
         	
         	if (!input.isKeyDown(input.KEY_RIGHT)) {
-        		isKeyDown = false;
+        		isKeyRightDown = false;
         	}
         	
         	if (input.isKeyDown(input.KEY_UP)) {
-        		if(isKeyDown == false) {
+        		if(isKeyUpDown == false) {
         			game.getWorldMap().moveMapUp();
         		}
-        		isKeyDown = true;
+        		isKeyUpDown = true;
         	}
         	
         	if (!input.isKeyDown(input.KEY_UP)) {
-        		isKeyDown = false;
+        		isKeyUpDown = false;
         	}
         	
         	if (input.isKeyDown(input.KEY_DOWN)) {
-        		if(isKeyDown == false) {
-        			game.getWorldMap().moveMapUp();
+        		if(isKeyDownDown == false) {
+        			game.getWorldMap().moveMapDown();
         		}
-        		isKeyDown = true;
+        		isKeyDownDown = true;
         	}
         	
         	if (!input.isKeyDown(input.KEY_DOWN)) {
-        		isKeyDown = false;
+        		isKeyDownDown = false;
         	}
     	}
     	

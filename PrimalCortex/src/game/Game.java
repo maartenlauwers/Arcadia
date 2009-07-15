@@ -80,13 +80,13 @@ public class Game implements GuiListener, ActionListener {
     		}
     	}
     	
-    	worldMap = new WorldMap(Config.getScreenWidth(), Config.getScreenHeight(), 20, 20, 64, 64);
+    	worldMap = new WorldMap(Config.getScreenWidth(), Config.getScreenHeight(), 100, 100, 64, 64);
     	
     	for(int i=0; i<worldMap.getNrTilesVertical(); i++) {
     		for (int j=0; j<worldMap.getNrTilesHorizontal(); j++) {
     			//worldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), i, j, 64, 64));   //TODO: hardcoded tile width and height
     			
-    			if(i == 5 && j == 3) {
+    			if(i%2 == 0 && j%2 == 0) {
     				worldMap.addTile(new Tile(textureManager.getTextureByKey("market_active"), j, i, 64, 64));   //TODO: hardcoded tile width and height
     			} else {
     				worldMap.addTile(new Tile(textureManager.getTextureByKey("dirt"), j, i, 64, 64));   //TODO: hardcoded tile width and height
