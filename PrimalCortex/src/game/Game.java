@@ -1,9 +1,11 @@
 package game;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.Timer;
 
@@ -80,16 +82,34 @@ public class Game implements GuiListener, ActionListener {
     		}
     	}
     	
-    	worldMap = new WorldMap(Config.getScreenWidth(), Config.getScreenHeight(), 100, 100, 64, 64);
+    	Random random = new Random();
+    	worldMap = new WorldMap(Config.getScreenWidth(), Config.getScreenHeight(), 100, 100, 64, 64);    	
     	
+    	// Aim = 30% water, 20% resources, 50% build space
+    	// Note, the algorithm below doesn't guarantee this.
     	for(int i=0; i<worldMap.getNrTilesVertical(); i++) {
-    		for (int j=0; j<worldMap.getNrTilesHorizontal(); j++) {
-    			//worldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), i, j, 64, 64));   //TODO: hardcoded tile width and height
+    		for (int j=0; j<worldMap.getNrTilesHorizontal(); j++) {    			
     			
-    			if(i%2 == 0 && j%2 == 0) {
-    				worldMap.addTile(new Tile(textureManager.getTextureByKey("market_active"), j, i, 64, 64));   //TODO: hardcoded tile width and height
+    			int r = random.nextInt(10);
+    			System.out.println("random: " + r);
+    			if(r == 0 || r == 1 || r == 2) {
+    				// water
+    				worldMap.addTile(new Tile(textureManager.getTextureByKey("water"), j, i, 64, 64));   //TODO: hardcoded tile width and height
+    			} else if(r == 3 || r == 4) {
+    				// resources
+    				int resource = random.nextInt(2);
+    				System.out.println("resource: " + resource);
+    				if(resource == 0) {
+    					//goldmine
+    					worldMap.addTile(new Tile(textureManager.getTextureByKey("dirt"), j, i, 64, 64));   //TODO: hardcoded tile width and height
+    				} else {
+    					//farm (forest?)
+    					worldMap.addTile(new Tile(textureManager.getTextureByKey("farm_active"), j, i, 64, 64));   //TODO: hardcoded tile width and height
+    				}
+    				
     			} else {
-    				worldMap.addTile(new Tile(textureManager.getTextureByKey("dirt"), j, i, 64, 64));   //TODO: hardcoded tile width and height
+    				// build space
+    				worldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), j, i, 64, 64));   //TODO: hardcoded tile width and height
     			}
     		} 
     	}
