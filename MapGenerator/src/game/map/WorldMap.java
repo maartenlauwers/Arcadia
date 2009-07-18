@@ -99,8 +99,7 @@ public class WorldMap extends Map {
 		List<Tile> tileList = super.getTileList();				
 		List<Tile> tileListCopy = new ArrayList<Tile>();		
 							
-		int startIndex = offsetX + (offsetY * nrTilesHorizontal);		
-		System.out.println("Startindex: " + startIndex);
+		int startIndex = offsetX + (offsetY * nrTilesHorizontal);				
 					
 		int index = 0;				
 		int counter = 0;
@@ -132,6 +131,7 @@ public class WorldMap extends Map {
 				horTilesChecked = 0;
 				verTilesChecked++;
 			}
+			System.out.println("X: " + t.getX() + ", Y: " + t.getY());
 			t.draw();
 		}
 					

@@ -21,8 +21,13 @@ public class StatusBar {
 	private Window window;
 	private Panel panel;
 	
+	private Label lblViewport;
+	private Label lblX;
+	private Label lblY;
+	
 	private Button btnGenerate;
 	private Button btnSave;
+	private Button btnLoad;
 	private Button btnBuild;	
 	private Button btnQuit;		
 	
@@ -45,11 +50,20 @@ public class StatusBar {
 		TrueTypeFont ttf = Config.getCurrentFont();				
 		
 		int offset = 10;
+		lblViewport = new Label("Statusbar", offset, 5, "Viewport coördinates: ");
 		
-		btnGenerate = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 480, 5, "Generate", "Generate");
+		offset += ttf.getWidth("Viewport coördinates") + 25;
+		lblX = new Label("Statusbar", offset, 5, "X: " + game.getWorldMap().getOffsetX());
+		
+		offset += ttf.getWidth("X: " + game.getWorldMap().getOffsetX()) + 25;
+		lblY = new Label("Statusbar", offset, 5, "Y: " + game.getWorldMap().getOffsetY());
+		
+		btnGenerate = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 600, 5, "Generate", "Generate");
 		btnGenerate.addGuiListener(game);
-		btnSave = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 360, 5, "Save", "Save");
+		btnSave = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 480, 5, "Save", "Save");
 		btnSave.addGuiListener(game);
+		btnLoad = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 360, 5, "Load", "Load");
+		btnLoad.addGuiListener(game);
 		btnBuild = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 240, 5, "Build", "Build");
 		btnBuild.addGuiListener(game);
 		btnQuit = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 120, 5, "Quit", "Quit");
@@ -59,8 +73,12 @@ public class StatusBar {
 		Border border = new Border("Statusbar", 0, height, width, 5, true);
 		
 		window.addWidget(panel);
+		window.addWidget(lblViewport);
+		window.addWidget(lblX);
+		window.addWidget(lblY);
 		window.addWidget(btnGenerate);
 		window.addWidget(btnSave);
+		window.addWidget(btnLoad);
 		window.addWidget(btnBuild);
 		window.addWidget(btnQuit);
 		window.addWidget(border);
@@ -81,4 +99,20 @@ public class StatusBar {
 	public boolean isMouseClicked(int mouseX, int mouseY) {
 		return window.isMouseClicked(mouseX, mouseY);
 	}	
+	
+	public void updateStatusBar(Game game) {
+		
+		TrueTypeFont ttf = Config.getCurrentFont();		
+		
+		int offset = 10;
+		lblViewport = new Label("Statusbar", offset, 5, "Viewport coördinates: ");
+		
+		offset += ttf.getWidth("Viewport coördinates") + 25;
+		lblX.setX(offset);
+		lblX.setText("X: " + game.getWorldMap().getOffsetX());		
+		
+		offset += ttf.getWidth("X: " + game.getWorldMap().getOffsetX()) + 25;
+		lblY.setX(offset);
+		lblY.setText("Y: " + game.getWorldMap().getOffsetY());
+	}
 }

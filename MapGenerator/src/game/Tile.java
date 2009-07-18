@@ -17,14 +17,15 @@ public class Tile {
 	private int y;
 	private int width;
 	private int height;
-	private Image texture;
-	//private Role role;	
+	private TileType tileType;
+	private Image texture;	
 	private TileState currentState;
 	
 	private boolean selected;				
 	
-	public Tile(Image texture, int x, int y, int width, int height) {
+	public Tile(Image texture, TileType tileType, int x, int y, int width, int height) {
 		this.texture = texture;
+		this.tileType = tileType;
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -67,8 +68,13 @@ public class Tile {
 		return height;
 	}
 	
-	public void setTexture(Image texture) {
+	public void setTexture(Image texture, TileType tileType) {
 		this.texture = texture;
+		this.tileType = tileType;
+	}
+	
+	public TileType getTileType() {
+		return tileType;
 	}
 	
 	public void setState(TileState tileState) {
@@ -83,8 +89,8 @@ public class Tile {
 	 */
 	public boolean isClicked(int mouseX, int mouseY) {				
 		
-		if(mouseX >= x && mouseX < (x + 64)) {
-			if(mouseY >= y && mouseY < (y + 64)) {
+		if(mouseX >= x && mouseX < (x + width)) {
+			if(mouseY >= y && mouseY < (y + height)) {
 				System.out.println("Clicked tile at " + x + ", " + y);
 				return true;
 			}
@@ -115,6 +121,6 @@ public class Tile {
 	 * Draws the texture of the current tile on the screen
 	 */
 	public void draw() {		
-		texture.draw(x, y);		
+		texture.draw(x, y, width, height);		
 	}
 }

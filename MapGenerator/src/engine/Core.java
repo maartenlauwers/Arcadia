@@ -1,45 +1,36 @@
 package engine;
 
-import java.awt.Font;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Line;
-
-import engine.gui.EmptyWindow;
-import engine.gui.EventActionType;
-import engine.gui.GuiEvent;
-import engine.gui.Window;
-import engine.gui.WindowStatus;
-import engine.gui.widgets.Button;
-import engine.gui.widgets.Label;
-import engine.gui.widgets.Panel;
 
 import game.Game;
 import game.Tile;
-import game.map.LocalMap;
-import game.map.Map;
+
+import javax.swing.Timer;
  
-public class Core extends BasicGame {
+public class Core extends BasicGame implements ActionListener {
  		
-		
+			
 	private boolean isLeftMouseDown;
 	private boolean isRightMouseDown;
-	private boolean isKeyDown;
 	private boolean isKeyLeftDown;
 	private boolean isKeyRightDown;
 	private boolean isKeyUpDown;
 	private boolean isKeyDownDown;
+		
+	private int oldMouseX;
+	private int oldMouseY;
+	private Timer dragTimer;
+	private boolean dragAllowed;
 	
-	private Game game;
-	private Camera camera;
+	private Game game;	
 	
     public Core()
     {
@@ -55,16 +46,13 @@ public class Core extends BasicGame {
     	new Config(1024, 768, textureManager);   
     	      	    	  
     	game = new Game(this);
-    	game.createStatusBar();
-    	game.createInfoBar();
-    	
-    	this.isLeftMouseDown = false;
-    	this.isRightMouseDown = false;
-    	this.isKeyDown = false;
+    	game.createStatusBar();    	    	   
     	
     	gc.setShowFPS(false);
+    	dragTimer = new Timer(40, this);
+    	dragTimer.stop();
+    	dragAllowed = false;
     	
-    	camera = new Camera(Config.getScreenWidth(), Config.getScreenHeight());    	
     }
  
     @Override
@@ -77,51 +65,100 @@ public class Core extends BasicGame {
     	int mouseX = input.getMouseX();
     	int mouseY = input.getMouseY();
     	
-    		if (input.isKeyDown(input.KEY_LEFT)) {
-        		if(isKeyLeftDown == false) {
-        			game.getWorldMap().moveMapLeft();
-        		}
-        		isKeyLeftDown = true;
-        	}
-        	
-        	if (!input.isKeyDown(input.KEY_LEFT)) {
-        		isKeyLeftDown = false;
-        	}
-        	
-        	if (input.isKeyDown(input.KEY_RIGHT)) {
-        		if(isKeyRightDown == false) {
-        			game.getWorldMap().moveMapRight();
-        		}
-        		isKeyRightDown = true;
-        	}
-        	
-        	if (!input.isKeyDown(input.KEY_RIGHT)) {
-        		isKeyRightDown = false;
-        	}
-        	
-        	if (input.isKeyDown(input.KEY_UP)) {
-        		if(isKeyUpDown == false) {
-        			game.getWorldMap().moveMapUp();
-        		}
-        		isKeyUpDown = true;
-        	}
-        	
-        	if (!input.isKeyDown(input.KEY_UP)) {
-        		isKeyUpDown = false;
-        	}
-        	
-        	if (input.isKeyDown(input.KEY_DOWN)) {
-        		if(isKeyDownDown == false) {
-        			game.getWorldMap().moveMapDown();
-        		}
-        		isKeyDownDown = true;
-        	}
-        	
-        	if (!input.isKeyDown(input.KEY_DOWN)) {
-        		isKeyDownDown = false;
-        	}
     	
-    	    	    
+    	if (input.isMouseButtonDown(1)) {    		
+    			
+    			if(isRightMouseDown == true && dragAllowed) {
+    				    				        		
+        			
+        			if(mouseX > (oldMouseX + 15)) {
+        				game.getWorldMap().moveMapLeft();
+        			}
+        			
+        			if(mouseX < (oldMouseX - 15)) {
+        				game.getWorldMap().moveMapRight();
+        			}
+        			
+        			if(mouseY > (oldMouseY + 15)) {
+        				game.getWorldMap().moveMapUp();
+        			}
+        			
+        			if(mouseY < (oldMouseY - 15)) {
+        				game.getWorldMap().moveMapDown();
+        			}
+        			
+        			oldMouseX = mouseX;
+        			oldMouseY = mouseY;   
+        			dragAllowed = false;
+        			dragTimer.restart();
+        			    			
+    			}
+    			
+    			if(isRightMouseDown == false) {
+    				isRightMouseDown = true;
+    				dragAllowed = false;
+    				dragTimer.restart();
+    				
+    			}
+    			    					
+    	}
+    	
+       	if(!input.isMouseButtonDown(1)) {
+    		isRightMouseDown = false;
+    		dragAllowed = false;
+    		dragTimer.stop();
+    	}
+    	
+    	
+    	// KEYBOARD INPUT
+    	if (input.isKeyDown(input.KEY_LEFT)) {
+        	if(isKeyLeftDown == false) {
+        		game.getWorldMap().moveMapLeft();
+        		game.getWorldMap().moveMapLeft();
+        	}
+        	isKeyLeftDown = true;
+        }
+        	
+        if (!input.isKeyDown(input.KEY_LEFT)) {
+        	isKeyLeftDown = false;
+        }
+        
+        if (input.isKeyDown(input.KEY_RIGHT)) {
+        	if(isKeyRightDown == false) {
+        		game.getWorldMap().moveMapRight();
+        		game.getWorldMap().moveMapRight();
+        	}
+        	isKeyRightDown = true;
+        }
+        
+        if (!input.isKeyDown(input.KEY_RIGHT)) {
+        	isKeyRightDown = false;
+        }
+        
+        if (input.isKeyDown(input.KEY_UP)) {
+        	if(isKeyUpDown == false) {
+        		game.getWorldMap().moveMapUp();
+        		game.getWorldMap().moveMapUp();
+        	}
+        	isKeyUpDown = true;
+        }
+        	
+        if (!input.isKeyDown(input.KEY_UP)) {
+        	isKeyUpDown = false;
+        }
+        
+        if (input.isKeyDown(input.KEY_DOWN)) {
+        	if(isKeyDownDown == false) {
+        		game.getWorldMap().moveMapDown();
+        		game.getWorldMap().moveMapDown();
+        	}
+        	isKeyDownDown = true;
+        }
+        	
+        if (!input.isKeyDown(input.KEY_DOWN)) {
+        	isKeyDownDown = false;
+        }
+    	    	    	    
     	
     	game.checkGUIHover(mouseX, mouseY);
     	if (input.isMouseButtonDown(0)) {
@@ -158,7 +195,7 @@ public class Core extends BasicGame {
     		
     	for(Tile t: game.getWorldMap().getTileList()) {
         	if(t.isSelected()) {    			    			
-        		g.drawRect(t.getX(), t.getY(), 64, 64);
+        		g.drawRect(t.getX(), t.getY(), t.getWidth(), t.getHeight());
         	}
         }    	    	    	    	  
     	
@@ -174,4 +211,11 @@ public class Core extends BasicGame {
          app.setDisplayMode(1024, 768, false);
          app.start();
     }
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		dragAllowed = true;		
+		System.out.println("Dragallowed true");
+		
+	}
 }
