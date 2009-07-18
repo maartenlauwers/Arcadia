@@ -15,6 +15,7 @@ public class WorldMap extends Map {
 	private int nrVerticalTilesOnScreen;
 	private int offsetX;
 	private int offsetY;
+	private List<Tile> tileListCopy;
 	
 	public WorldMap(int pixelWidth, int pixelHeight, int nrTilesHorizontal, int nrTilesVertical, int tileWidth, int tileHeight) {
 		super(pixelWidth, pixelHeight, nrTilesHorizontal, nrTilesVertical);			
@@ -24,6 +25,7 @@ public class WorldMap extends Map {
 		this.nrVerticalTilesOnScreen = Config.getScreenHeight()/tileHeight + 1;
 		this.offsetX = 0;
 		this.offsetY = 0;
+		tileListCopy = new ArrayList<Tile>();
 		
 		map = new int[nrTilesHorizontal][nrTilesVertical];
 		
@@ -89,16 +91,21 @@ public class WorldMap extends Map {
 		
 	}	
 	
+	public List<Tile> getOnScreenTileList() {
+		return tileListCopy;
+	}
+	
 	public void draw() {
+		
 		
 		int[] requiredIndices = new int[nrHorizontalTilesOnScreen * nrVerticalTilesOnScreen];
 		
 		int nrTilesHorizontal = super.getNrTilesHorizontal();		
 		int lengthToNextRow = nrTilesHorizontal;	
 		
-		List<Tile> tileList = super.getTileList();				
-		List<Tile> tileListCopy = new ArrayList<Tile>();		
-							
+		List<Tile> tileList = super.getTileList();						
+		tileListCopy = new ArrayList<Tile>();
+		
 		int startIndex = offsetX + (offsetY * nrTilesHorizontal);				
 					
 		int index = 0;				

@@ -169,7 +169,7 @@ public class Core extends BasicGame implements ActionListener {
     			
     			// If the GUI wasn't clicked, it could have been one of the tiles
     			if(!guiClicked) {
-    				for(Tile t : game.getWorldMap().getTileList()) {
+    				for(Tile t : game.getWorldMap().getOnScreenTileList()) {
     	    			
     		    		t.setSelected(false);
     		    		if (t.isClicked(mouseX, mouseY)) {
@@ -193,7 +193,7 @@ public class Core extends BasicGame implements ActionListener {
     	    	
     	game.getWorldMap().draw();
     		
-    	for(Tile t: game.getWorldMap().getTileList()) {
+    	for(Tile t: game.getWorldMap().getOnScreenTileList()) {
         	if(t.isSelected()) {    			    			
         		g.drawRect(t.getX(), t.getY(), t.getWidth(), t.getHeight());
         	}
