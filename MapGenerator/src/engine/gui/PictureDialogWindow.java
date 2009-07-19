@@ -59,7 +59,7 @@ public class PictureDialogWindow implements Window {
 		
 		addWidget(new PictureBox(id, 10, height/2 - picHeight/2, picWidth, picHeight, picture));
 		addWidget(new Label(id, width/2 - ttf.getWidth(message)/2 + 10 + picWidth + 10, 15, message));
-		addWidget(new Button(id, EventActionType.CLOSE, (width - 100)/2, height - 30, "Ok", "Ok"));	
+		addWidget(new Button(id, (width - 100)/2, height - 30, "Ok", "Ok"));	
 	}
 	
 	public PictureDialogWindow(String id, String title, String message, int width, int height, Image picture, int picWidth, int picHeight) {
@@ -110,7 +110,7 @@ public class PictureDialogWindow implements Window {
 		}
 		
 		//addWidget(new Label(id, width/2 - ttf.getWidth(message)/2 + 10 + picWidth + 10, height/2 - ttf.getHeight()/2, message));		
-		addWidget(new Button(id, EventActionType.CLOSE, (width - 100)/2, height - 30, "Ok", "Ok"));	
+		addWidget(new Button(id, (width - 100)/2, height - 30, "Ok", "Ok"));	
 	}	
 	
 	public void addWidget(Widget w) {

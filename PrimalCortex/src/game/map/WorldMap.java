@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Config;
-import game.Tile;
+import game.tile.Tile;
 
 public class WorldMap extends Map {
 

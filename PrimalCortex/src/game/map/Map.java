@@ -1,6 +1,6 @@
 package game.map;
 
-import game.Tile;
+import game.tile.Tile;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -23,7 +23,6 @@ import engine.DualMap;
 import engine.TextureManager;
 import engine.gui.DialogWindow;
 import engine.gui.EmptyWindow;
-import engine.gui.EventActionType;
 import engine.gui.GuiEvent;
 import engine.gui.GuiListener;
 import engine.gui.PictureDialogWindow;
@@ -77,7 +76,7 @@ public class Game implements GuiListener {
     					worldMap.addTile(new Tile(textureManager.getTextureByKey("dirt"), TileType.DIRT, j, i, tileWidth, tileHeight));   //TODO: hardcoded tile width and height
     				} else {
     					//farm (forest?)
-    					worldMap.addTile(new Tile(textureManager.getTextureByKey("farm_active"), TileType.FOREST, j, i, tileWidth, tileHeight));   //TODO: hardcoded tile width and height
+    					worldMap.addTile(new Tile(textureManager.getTextureByKey("forest"), TileType.FOREST, j, i, tileWidth, tileHeight));   //TODO: hardcoded tile width and height
     				}
     				
     			} else {
@@ -112,7 +111,7 @@ public class Game implements GuiListener {
 				 String line = in.readLine();
 				 if(line != null) {
 					 for (int j=0; j<nrHorizontalTiles; j++) {    			
-						 tokens[i][j] = line.charAt(j);
+						 tokens[j][i] = line.charAt(j);
 						 test.append(line.charAt(j));
 					 }	 
 				 }		
@@ -126,15 +125,15 @@ public class Game implements GuiListener {
 		    		char token = tokens[j][i];
 		    		
 					if(token == '1') {
-						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), TileType.GRASS, j, i, tileWidth, tileHeight));
+						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), TileType.GRASS, i, j, tileWidth, tileHeight));
 					} else if(token == '2') {
-						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("dirt"), TileType.DIRT, j, i, tileWidth, tileHeight));
+						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("dirt"), TileType.DIRT, i, j, tileWidth, tileHeight));
 					} else if(token == '3') {
-						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("water"), TileType.WATER, j, i, tileWidth, tileHeight));
+						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("water"), TileType.WATER, i, j, tileWidth, tileHeight));
 					} else if(token == '4') {
-						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("farm_active"), TileType.FOREST, j, i, tileWidth, tileHeight));
+						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("forest"), TileType.FOREST, i, j, tileWidth, tileHeight));
 					} else if(token == '5') {
-						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), TileType.MINE, j, i, tileWidth, tileHeight));
+						newWorldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), TileType.MINE, i, j, tileWidth, tileHeight));
 					}						 
 		    	} 
 		    }
@@ -235,7 +234,7 @@ public class Game implements GuiListener {
 		// Grass
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("grass")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Grass"));		
-		Button buildGrassButton = new Button("BuildMenu", EventActionType.OTHER, 80, heightOffset + 25, "Create", "BuildGrass");
+		Button buildGrassButton = new Button("BuildMenu", 80, heightOffset + 25, "Create", "BuildGrass");
 		buildGrassButton.addGuiListener(this);
 		newWindow.addWidget(buildGrassButton);
 		
@@ -247,7 +246,7 @@ public class Game implements GuiListener {
 		heightOffset += 70;
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("dirt")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Dirt"));		
-		Button buildDirtButton = new Button("BuildMenu", EventActionType.OTHER, 80, heightOffset + 25, "Create", "BuildDirt");
+		Button buildDirtButton = new Button("BuildMenu", 80, heightOffset + 25, "Create", "BuildDirt");
 		buildDirtButton.addGuiListener(this);
 		newWindow.addWidget(buildDirtButton);
 		
@@ -259,7 +258,7 @@ public class Game implements GuiListener {
 		heightOffset += 70;
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("water")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Water"));		
-		Button buildWaterButton = new Button("BuildMenu", EventActionType.OTHER, 80, heightOffset + 25, "Create", "BuildWater");
+		Button buildWaterButton = new Button("BuildMenu", 80, heightOffset + 25, "Create", "BuildWater");
 		buildWaterButton.addGuiListener(this);
 		newWindow.addWidget(buildWaterButton);
 		
@@ -269,9 +268,9 @@ public class Game implements GuiListener {
 				
 		// Forest
 		heightOffset += 70;
-		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("grass")));
+		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("forest")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Forest"));				
-		Button buildForestButton = new Button("BuildMenu", EventActionType.CLOSE, 80, heightOffset + 25, "Create", "BuildForest");
+		Button buildForestButton = new Button("BuildMenu", 80, heightOffset + 25, "Create", "BuildForest");
 		buildForestButton.addGuiListener(this);
 		newWindow.addWidget(buildForestButton);
 		
@@ -282,7 +281,7 @@ public class Game implements GuiListener {
 		heightOffset += 70;
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("grass")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Mine"));	
-		Button buildMineButton = new Button("BuildMenu", EventActionType.CLOSE, 80, heightOffset + 25, "Create", "BuildMine");
+		Button buildMineButton = new Button("BuildMenu", 80, heightOffset + 25, "Create", "BuildMine");
 		buildMineButton.addGuiListener(this);
 		newWindow.addWidget(buildMineButton);
 		
@@ -290,7 +289,7 @@ public class Game implements GuiListener {
 		newWindow.addWidget(new PictureBox("BuildMenu", 0, heightOffset + 60, 300, 1, Config.getTextureManager().getTextureByKey("border_horizontal")));			
 		
 		
-		Button closeButton = new Button("BuildMenu", EventActionType.CLOSE, 10, 470, "Close", "CloseBuildMenu");
+		Button closeButton = new Button("BuildMenu", 10, 470, "Close", "CloseBuildMenu");
 		closeButton.addGuiListener(this);
 		newWindow.addWidget(closeButton);
 		

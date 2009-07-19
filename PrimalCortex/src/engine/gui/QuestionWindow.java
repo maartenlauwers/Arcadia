@@ -54,8 +54,8 @@ private WindowStatus status;
 		
 		
 		addWidget(new Label(id, width/2 - ttf.getWidth(message)/2, 15, message));
-		addWidget(new Button(id, EventActionType.CLOSE, 10, height - 30, "Yes", "Yes"));	
-		addWidget(new Button(id, EventActionType.CLOSE, width - 120, height - 30, "No", "No"));
+		addWidget(new Button(id, 10, height - 30, "Yes", "Yes"));	
+		addWidget(new Button(id, width - 120, height - 30, "No", "No"));
 	}
 	
 	public QuestionWindow(String id, String title, String message, int width, int height) {
@@ -76,8 +76,8 @@ private WindowStatus status;
 		
 		TrueTypeFont ttf = Config.getCurrentFont();
 		addWidget(new Label(id, width/2 - ttf.getWidth(message)/2, height/2 - ttf.getHeight()/2, message));
-		addWidget(new Button(id, EventActionType.CLOSE, 10, height - 30, "Yes", "Yes"));	
-		addWidget(new Button(id, EventActionType.CLOSE, width - 120, height - 30, "No", "No"));
+		addWidget(new Button(id, 10, height - 30, "Yes", "Yes"));	
+		addWidget(new Button(id, width - 120, height - 30, "No", "No"));
 	}
 	
 	public void addWidget(Widget w) {

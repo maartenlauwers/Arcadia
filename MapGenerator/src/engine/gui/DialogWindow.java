@@ -50,7 +50,7 @@ public class DialogWindow implements Window {
 		
 		
 		addWidget(new Label(id, width/2 - ttf.getWidth(message)/2, 15, message));
-		addWidget(new Button(id, EventActionType.CLOSE, (width - 100)/2, height - 30, "Ok", "Ok"));	
+		addWidget(new Button(id, (width - 100)/2, height - 30, "Ok", "Ok"));	
 	}
 	
 	public DialogWindow(String id, String title, String message, int width, int height) {
@@ -71,7 +71,7 @@ public class DialogWindow implements Window {
 		
 		TrueTypeFont ttf = Config.getCurrentFont();
 		addWidget(new Label(id, width/2 - ttf.getWidth(message)/2, height/2 - ttf.getHeight()/2, message));
-		addWidget(new Button(id, EventActionType.CLOSE, (width - 100)/2, height - 30, "Ok", "Ok"));	
+		addWidget(new Button(id, (width - 100)/2, height - 30, "Ok", "Ok"));	
 	}
 	
 	public void addWidget(Widget w) {

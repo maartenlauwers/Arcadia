@@ -6,7 +6,6 @@ import org.newdawn.slick.TrueTypeFont;
 
 import engine.Config;
 import engine.gui.EmptyWindow;
-import engine.gui.EventActionType;
 import engine.gui.Window;
 import engine.gui.WindowStatus;
 import engine.gui.widgets.Border;
@@ -58,15 +57,15 @@ public class StatusBar {
 		offset += ttf.getWidth("X: " + game.getWorldMap().getOffsetX()) + 25;
 		lblY = new Label("Statusbar", offset, 5, "Y: " + game.getWorldMap().getOffsetY());
 		
-		btnGenerate = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 600, 5, "Generate", "Generate");
+		btnGenerate = new Button("Statusbar", window.getWidth() - 600, 5, "Generate", "Generate");
 		btnGenerate.addGuiListener(game);
-		btnSave = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 480, 5, "Save", "Save");
+		btnSave = new Button("Statusbar", window.getWidth() - 480, 5, "Save", "Save");
 		btnSave.addGuiListener(game);
-		btnLoad = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 360, 5, "Load", "Load");
+		btnLoad = new Button("Statusbar", window.getWidth() - 360, 5, "Load", "Load");
 		btnLoad.addGuiListener(game);
-		btnBuild = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 240, 5, "Build", "Build");
+		btnBuild = new Button("Statusbar", window.getWidth() - 240, 5, "Build", "Build");
 		btnBuild.addGuiListener(game);
-		btnQuit = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 120, 5, "Quit", "Quit");
+		btnQuit = new Button("Statusbar", window.getWidth() - 120, 5, "Quit", "Quit");
 		btnQuit.addGuiListener(game);			
 				
 		//bottom border

@@ -131,7 +131,7 @@ public class WorldMap extends Map {
 		int verTilesChecked = 0;
 		for(Tile t : tileListCopy) {
 			t.setX(horTilesChecked*tileWidth);
-			t.setY(verTilesChecked*tileHeight + 30);
+			t.setY(verTilesChecked*tileHeight + 35);
 			
 			horTilesChecked++;
 			if(horTilesChecked == nrHorizontalTilesOnScreen) {

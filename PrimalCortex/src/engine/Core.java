@@ -14,7 +14,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Line;
 
 import engine.gui.EmptyWindow;
-import engine.gui.EventActionType;
 import engine.gui.GuiEvent;
 import engine.gui.Window;
 import engine.gui.WindowStatus;
@@ -24,9 +23,9 @@ import engine.gui.widgets.Panel;
 
 import game.Game;
 import game.InputController;
-import game.Tile;
 import game.map.LocalMap;
 import game.map.Map;
+import game.tile.Tile;
  
 public class Core extends BasicGame {
  	
@@ -144,43 +143,7 @@ public class Core extends BasicGame {
         	if (!input.isKeyDown(input.KEY_DOWN)) {
         		isKeyDownDown = false;
         	}
-    	}
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	if (input.isKeyDown(input.KEY_F)) {
-    		if(isKeyDown == false) {
-    			inputController.Key_F();
-    		}
-    		isKeyDown = true;
-    	}    	    	
-    	
-    	if (!input.isKeyDown(input.KEY_F)) {
-    		isKeyDown = false;
-    	}
-    	
-    	if (input.isKeyDown(input.KEY_M)) {
-    		if(isKeyDown == false) {
-    			inputController.Key_M();
-    		}
-    		isKeyDown = true;
-    	}
-    	
-    	if (!input.isKeyDown(input.KEY_M)) {
-    		isKeyDown = false;
-    	}
-    	    	    
+    	}    	    	    	    	    	    	    	    	    	    	   
     	
     	game.checkGUIHover(mouseX, mouseY);
     	if (input.isMouseButtonDown(0)) {
@@ -191,13 +154,25 @@ public class Core extends BasicGame {
     			
     			// If the GUI wasn't clicked, it could have been one of the tiles
     			if(!guiClicked) {
-    				for(Tile t : game.getLocalMap().getTileList()) {
-    	    			
-    		    		t.setSelected(false);
-    		    		if (t.isClicked(mouseX, mouseY)) {
-    		    			t.setSelected(true);    		    			
-    		    		}
-    		    	}	
+    				
+    				if(game.onLocalMap()) {
+    					for(Tile t : game.getLocalMap().getTileList()) {
+        	    			
+        		    		t.setSelected(false);
+        		    		if (t.isClicked(mouseX, mouseY)) {
+        		    			t.setSelected(true);    		    			
+        		    		}
+        		    	}
+    				} else {
+    					for(Tile t : game.getWorldMap().getOnScreenTileList()) {
+        	    			
+        		    		t.setSelected(false);
+        		    		if (t.isClicked(mouseX, mouseY)) {
+        		    			t.setSelected(true);    		    			
+        		    		}
+        		    	}
+    				}
+    					
     			}    			
     		}    		    		
     	}
@@ -214,15 +189,23 @@ public class Core extends BasicGame {
     {
     	
     	if(game.onLocalMap()) {
+    		// Draw the local map
     		game.getLocalMap().draw();
     		
     		for(Tile t: game.getLocalMap().getTileList()) {
         		if(t.isSelected()) {    			    			
-        			g.drawRect(t.getX(), t.getY(), 64, 64);
+        			g.drawRect(t.getX(), t.getY(), t.getWidth(), t.getHeight());
         		}
         	}
     	} else {
+    		// Draw the world map
     		game.getWorldMap().draw();
+    		
+    		for(Tile t: game.getWorldMap().getOnScreenTileList()) {
+            	if(t.isSelected()) {    			    			
+            		g.drawRect(t.getX(), t.getY(), t.getWidth(), t.getHeight());
+            	}
+            }    	  
     	}    	    	    	   
     	
     	game.drawGUIElements(g);

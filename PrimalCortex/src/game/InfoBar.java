@@ -1,18 +1,14 @@
 package game;
 
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.TrueTypeFont;
 
 import engine.Config;
 import engine.gui.EmptyWindow;
-import engine.gui.EventActionType;
 import engine.gui.Window;
 import engine.gui.widgets.Border;
 import engine.gui.widgets.Button;
-import engine.gui.widgets.Label;
 import engine.gui.widgets.Panel;
-import engine.gui.widgets.PictureBox;
 import engine.gui.widgets.ProgressBar;
 
 public class InfoBar {
@@ -21,6 +17,7 @@ public class InfoBar {
 	private Panel panel;
 	
 	private ProgressBar structureBar;	
+	private Button mapButton;
 	
 	private int x;
 	private int y;
@@ -42,10 +39,10 @@ public class InfoBar {
 		TrueTypeFont ttf = Config.getCurrentFont();						
 		structureBar = new ProgressBar("InfoBar", "", 10, 5, 300, 20, Config.getTextureManager().getTextureByKey("progressbar"), 0);				
 
-		Button worldMapButton = new Button("InfoBar", EventActionType.OTHER, Config.getScreenWidth() - 240, 5, "World map", "WorldMap");
-		worldMapButton.addGuiListener(game);
+		mapButton = new Button("InfoBar", Config.getScreenWidth() - 240, 5, "World map", "WorldMap");
+		mapButton.addGuiListener(game);
 		
-		Button infoButton = new Button("InfoBar", EventActionType.OTHER, Config.getScreenWidth() - 120, 5, "Town info", "TownInfo");
+		Button infoButton = new Button("InfoBar", Config.getScreenWidth() - 120, 5, "Town info", "TownInfo");
 		infoButton.addGuiListener(game);
 		
 		
@@ -54,7 +51,7 @@ public class InfoBar {
 		
 		window.addWidget(panel);		
 		window.addWidget(structureBar);
-		window.addWidget(worldMapButton);
+		window.addWidget(mapButton);
 		window.addWidget(infoButton);
 		window.addWidget(border);
 	}	
@@ -73,6 +70,14 @@ public class InfoBar {
 	
 	public boolean isMouseClicked(int mouseX, int mouseY) {
 		return window.isMouseClicked(mouseX, mouseY);
+	}
+	
+	public void updateMapButton(boolean onLocalMap) {
+		if(onLocalMap) {
+			mapButton.setText("World map");
+		} else {
+			mapButton.setText("Town view");
+		}
 	}
 	
 	public void update(int structureProgress, String structureText) {

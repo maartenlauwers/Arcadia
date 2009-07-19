@@ -16,6 +16,8 @@ public class TextureManager {
 			Image grass = new Image("grass.png");
 			Image dirt = new Image("dirt.png");
 			Image water = new Image("water.png");
+			Image forest = new Image("forest.png");
+			
 			Image transparent = new Image("transparent.png");
 			
 			Image farm_construction = new Image("farm_construction2.png");
@@ -74,6 +76,7 @@ public class TextureManager {
 	    	addTextureByKey("grass", grass);
 	    	addTextureByKey("dirt", dirt);
 	    	addTextureByKey("water", water);
+	    	addTextureByKey("forest", forest);
 	    	addTextureByKey("transparent", transparent);
 	    	
 	    	addTextureByKey("farm_construction", farm_construction);

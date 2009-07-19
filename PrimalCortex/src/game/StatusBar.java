@@ -1,20 +1,16 @@
 package game;
 
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.TrueTypeFont;
 
 import engine.Config;
 import engine.gui.EmptyWindow;
-import engine.gui.EventActionType;
 import engine.gui.Window;
-import engine.gui.WindowStatus;
 import engine.gui.widgets.Border;
 import engine.gui.widgets.Button;
 import engine.gui.widgets.Label;
 import engine.gui.widgets.Panel;
 import engine.gui.widgets.PictureBox;
-import engine.gui.widgets.Widget;
 
 public class StatusBar {
 		
@@ -66,11 +62,11 @@ public class StatusBar {
 		offset = offset + ttf.getWidth(foodLabel.getText()) + 25;
 		trainLabel = new Label("Statusbar", offset , 5, "");
 							
-		btnDestroy = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 360, 5, "Destroy", "Destroy");
+		btnDestroy = new Button("Statusbar", window.getWidth() - 360, 5, "Destroy", "Destroy");
 		btnDestroy.addGuiListener(game);
-		btnBuild = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 240, 5, "Build", "Build");
+		btnBuild = new Button("Statusbar", window.getWidth() - 240, 5, "Build", "Build");
 		btnBuild.addGuiListener(game);
-		btnQuit = new Button("Statusbar", EventActionType.OTHER, window.getWidth() - 120, 5, "Quit", "Quit");
+		btnQuit = new Button("Statusbar", window.getWidth() - 120, 5, "Quit", "Quit");
 		btnQuit.addGuiListener(game);			
 		
 		

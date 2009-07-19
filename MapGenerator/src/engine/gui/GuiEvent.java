@@ -6,13 +6,11 @@ public class GuiEvent extends EventObject {
 	
 	private String parentId;
 	private String objectId;
-	private EventActionType eat;
 	
-	public GuiEvent(Object source, String parentId, String objectId, EventActionType eat) {
+	public GuiEvent(Object source, String parentId, String objectId) {
 		super(source);		
 		this.parentId = parentId;
 		this.objectId = objectId;
-		this.eat = eat;
 	}
 	
 	public String getParentId() {
@@ -23,8 +21,5 @@ public class GuiEvent extends EventObject {
 		return objectId;
 	}
 	
-	public EventActionType getEventActionType() {
-		return eat;
-	}
 
 }

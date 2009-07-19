@@ -5,7 +5,6 @@ import org.newdawn.slick.TrueTypeFont;
 
 import engine.Config;
 import engine.gui.EmptyWindow;
-import engine.gui.EventActionType;
 import engine.gui.Window;
 import engine.gui.widgets.Button;
 import engine.gui.widgets.Label;
@@ -61,7 +60,7 @@ public class TownInfoView {
 		
 		picture = new PictureBox("TownInfo", 150, 260, 128, 118, Config.getTextureManager().getTextureByKey("sword_and_shield"));
 		
-		Button closeButton = new Button("TownInfo", EventActionType.CLOSE, 10, 370, "Close", "CloseTownInfo");
+		Button closeButton = new Button("TownInfo", 10, 370, "Close", "CloseTownInfo");
 		closeButton.addGuiListener(game);
 				
 		window.addWidget(panel);

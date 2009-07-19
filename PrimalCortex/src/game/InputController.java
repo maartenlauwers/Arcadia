@@ -18,8 +18,7 @@ import game.structures.walls.TTopWall;
 import game.structures.walls.TopLeftWall;
 import game.structures.walls.TopRightWall;
 import game.structures.walls.VerticalWall;
-import game.structures.walls.Wall;
-import game.structures.walls.WallType;
+import game.tile.Tile;
 
 public class InputController {
 

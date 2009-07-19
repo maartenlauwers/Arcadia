@@ -3,6 +3,9 @@ package game;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,7 +20,6 @@ import engine.DualMap;
 import engine.TextureManager;
 import engine.gui.DialogWindow;
 import engine.gui.EmptyWindow;
-import engine.gui.EventActionType;
 import engine.gui.GuiEvent;
 import engine.gui.GuiListener;
 import engine.gui.PictureDialogWindow;
@@ -34,6 +36,8 @@ import game.structures.Farm;
 import game.structures.Hovel;
 import game.structures.Structure;
 import game.structures.StructureType;
+import game.tile.Tile;
+import game.tile.TileType;
 
 public class Game implements GuiListener, ActionListener {
 
@@ -77,42 +81,13 @@ public class Game implements GuiListener, ActionListener {
     	localMapActive = true;
     	
     	for(int i=0; i<localMap.getNrTilesHorizontal()*64; i += 64) {
-    		for (int j=30; j<localMap.getNrTilesVertical()*64; j += 64) {
-    			localMap.addTile(new Tile(textureManager.getTextureByKey("grass"), i, j, 64, 64));   //TODO: hardcoded tile width and height 			
+    		for (int j=35; j<localMap.getNrTilesVertical()*64; j += 64) {
+    			localMap.addTile(new Tile(textureManager.getTextureByKey("grass"), TileType.GRASS, i, j, 64, 64));   //TODO: hardcoded tile width and height 			
     		}
     	}
-    	
-    	Random random = new Random();
-    	worldMap = new WorldMap(Config.getScreenWidth(), Config.getScreenHeight(), 100, 100, 64, 64);    	
-    	
-    	// Aim = 30% water, 20% resources, 50% build space
-    	// Note, the algorithm below doesn't guarantee this.
-    	for(int i=0; i<worldMap.getNrTilesVertical(); i++) {
-    		for (int j=0; j<worldMap.getNrTilesHorizontal(); j++) {    			
-    			
-    			int r = random.nextInt(10);
-    			System.out.println("random: " + r);
-    			if(r == 0 || r == 1 || r == 2) {
-    				// water
-    				worldMap.addTile(new Tile(textureManager.getTextureByKey("water"), j, i, 64, 64));   //TODO: hardcoded tile width and height
-    			} else if(r == 3 || r == 4) {
-    				// resources
-    				int resource = random.nextInt(2);
-    				System.out.println("resource: " + resource);
-    				if(resource == 0) {
-    					//goldmine
-    					worldMap.addTile(new Tile(textureManager.getTextureByKey("dirt"), j, i, 64, 64));   //TODO: hardcoded tile width and height
-    				} else {
-    					//farm (forest?)
-    					worldMap.addTile(new Tile(textureManager.getTextureByKey("farm_active"), j, i, 64, 64));   //TODO: hardcoded tile width and height
-    				}
-    				
-    			} else {
-    				// build space
-    				worldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), j, i, 64, 64));   //TODO: hardcoded tile width and height
-    			}
-    		} 
-    	}
+    	    	
+    	// Load the world map
+    	loadMap();
     	
     	inputController = new InputController(this);      	
     	structureList = new ArrayList<Structure>();
@@ -135,6 +110,69 @@ public class Game implements GuiListener, ActionListener {
 	
 	public boolean onLocalMap() {
 		return localMapActive;
+	}
+	
+	public void loadMap() {			
+		
+		try {
+			 
+			 BufferedReader in = new BufferedReader(new FileReader("map.kac"));
+			 			 		
+			 int nrHorizontalTiles = new Integer(in.readLine()).intValue();
+			 System.out.println("Horizontal tiles: " + nrHorizontalTiles);
+			 int nrVerticalTiles = new Integer(in.readLine()).intValue();
+			 System.out.println("Vertical tiles: " + nrVerticalTiles);
+			 int tileWidth = new Integer(in.readLine()).intValue();
+			 System.out.println("Horizontal tiles: " + tileWidth);
+			 int tileHeight = new Integer(in.readLine()).intValue();
+			 System.out.println("Horizontal tiles: " + tileHeight);
+			 
+			 worldMap = new WorldMap(Config.getScreenWidth(), Config.getScreenHeight(), nrHorizontalTiles, nrVerticalTiles, tileWidth, tileHeight);
+			 
+			 char[][] tokens = new char[nrHorizontalTiles][nrVerticalTiles];			 
+			 for(int i=0; i<nrVerticalTiles; i++) {
+				 
+				 StringBuffer test = new StringBuffer();
+				 String line = in.readLine();
+				 if(line != null) {
+					 for (int j=0; j<nrHorizontalTiles; j++) {    			
+						 tokens[j][i] = line.charAt(j);
+						 test.append(line.charAt(j));
+					 }	 
+				 }		
+				 System.out.println(test.toString());
+			 }
+
+			 
+		    for(int i=0; i<nrVerticalTiles; i++) {
+		    	for (int j=0; j<nrHorizontalTiles; j++) {    					    					    			 
+					 
+		    		char token = tokens[j][i];
+		    		
+					if(token == '1') {
+						worldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), TileType.GRASS, i, j, tileWidth, tileHeight));
+					} else if(token == '2') {
+						worldMap.addTile(new Tile(textureManager.getTextureByKey("dirt"), TileType.DIRT, i, j, tileWidth, tileHeight));
+					} else if(token == '3') {
+						worldMap.addTile(new Tile(textureManager.getTextureByKey("water"), TileType.WATER, i, j, tileWidth, tileHeight));
+					} else if(token == '4') {
+						worldMap.addTile(new Tile(textureManager.getTextureByKey("forest"), TileType.FOREST, i, j, tileWidth, tileHeight));
+					} else if(token == '5') {
+						worldMap.addTile(new Tile(textureManager.getTextureByKey("grass"), TileType.MINE, i, j, tileWidth, tileHeight));
+					}						 
+		    	} 
+		    }
+		    			    
+		 
+		    in.close();		     		     		  	
+				
+		 } catch (IOException e) {
+			System.out.println(e.toString());
+			 
+			DialogWindow dw = new DialogWindow("LoadDialog", "Error", "An error occured while loading the map.");
+			dw.addGuiListener(this);
+			windowList.add("LoadDialog", dw);		
+		 }
 	}
 	
 	public Kingdom getKingdom() {
@@ -202,7 +240,7 @@ public class Game implements GuiListener, ActionListener {
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("house_active")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Hovel"));
 		newWindow.addWidget(new Label("BuildMenu", 160, heightOffset, "Cost: 500"));
-		Button buildHouseButton = new Button("BuildMenu", EventActionType.OTHER, 80, heightOffset + 25, "Build", "BuildHovel");
+		Button buildHouseButton = new Button("BuildMenu", 80, heightOffset + 25, "Build", "BuildHovel");
 		buildHouseButton.addGuiListener(this);
 		newWindow.addWidget(buildHouseButton);
 		
@@ -215,7 +253,7 @@ public class Game implements GuiListener, ActionListener {
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("farm_active")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Farm"));
 		newWindow.addWidget(new Label("BuildMenu", 160, heightOffset, "Cost: 1000"));
-		Button buildFarmButton = new Button("BuildMenu", EventActionType.OTHER, 80, heightOffset + 25, "Build", "BuildFarm");
+		Button buildFarmButton = new Button("BuildMenu", 80, heightOffset + 25, "Build", "BuildFarm");
 		buildFarmButton.addGuiListener(this);
 		newWindow.addWidget(buildFarmButton);
 		
@@ -228,7 +266,7 @@ public class Game implements GuiListener, ActionListener {
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("barracks_active")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Barracks"));
 		newWindow.addWidget(new Label("BuildMenu", 160, heightOffset, "Cost: 2000"));
-		Button buildBarracksButton = new Button("BuildMenu", EventActionType.OTHER, 80, heightOffset + 25, "Build", "BuildBarracks");
+		Button buildBarracksButton = new Button("BuildMenu", 80, heightOffset + 25, "Build", "BuildBarracks");
 		buildBarracksButton.addGuiListener(this);
 		newWindow.addWidget(buildBarracksButton);
 		
@@ -241,7 +279,7 @@ public class Game implements GuiListener, ActionListener {
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("market_active")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Market"));
 		newWindow.addWidget(new Label("BuildMenu", 160, heightOffset, "Cost: 2000"));			
-		Button buildMarketButton = new Button("BuildMenu", EventActionType.CLOSE, 80, heightOffset + 25, "Build", "BuildMarket");
+		Button buildMarketButton = new Button("BuildMenu", 80, heightOffset + 25, "Build", "BuildMarket");
 		buildMarketButton.addGuiListener(this);
 		newWindow.addWidget(buildMarketButton);
 		
@@ -253,7 +291,7 @@ public class Game implements GuiListener, ActionListener {
 		newWindow.addWidget(new PictureBox("BuildMenu", 10, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_horizontal_active")));
 		newWindow.addWidget(new Label("BuildMenu", 80, heightOffset, "Wall"));
 		newWindow.addWidget(new Label("BuildMenu", 160, heightOffset, "Cost: 500"));			
-		Button buildWallButton = new Button("BuildMenu", EventActionType.CLOSE, 80, heightOffset + 25, "Build", "BuildWall");
+		Button buildWallButton = new Button("BuildMenu", 80, heightOffset + 25, "Build", "BuildWall");
 		buildWallButton.addGuiListener(this);
 		newWindow.addWidget(buildWallButton);
 		
@@ -261,7 +299,7 @@ public class Game implements GuiListener, ActionListener {
 		newWindow.addWidget(new PictureBox("BuildMenu", 0, heightOffset + 60, 300, 1, Config.getTextureManager().getTextureByKey("border_horizontal")));			
 		
 		
-		Button closeButton = new Button("BuildMenu", EventActionType.CLOSE, 10, 470, "Close", "CloseBuildMenu");
+		Button closeButton = new Button("BuildMenu", 10, 470, "Close", "CloseBuildMenu");
 		closeButton.addGuiListener(this);
 		newWindow.addWidget(closeButton);
 		
@@ -283,42 +321,42 @@ public class Game implements GuiListener, ActionListener {
 		
 		// Horizontal wall
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_horizontal_active")));		
-		Button buildWallHorizontalButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildHorizontal");
+		Button buildWallHorizontalButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildHorizontal");
 		buildWallHorizontalButton.addGuiListener(this);
 		newWindow.addWidget(buildWallHorizontalButton);
 		
 		// Vertical wall
 		widthOffset += 80;
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_vertical_active")));		
-		Button buildWallVerticalButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildVertical");
+		Button buildWallVerticalButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildVertical");
 		buildWallVerticalButton.addGuiListener(this);
 		newWindow.addWidget(buildWallVerticalButton);
 		
 		// Top left corner wall
 		widthOffset += 80;
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_topleft_active")));		
-		Button buildWallTopLeftButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTopLeft");
+		Button buildWallTopLeftButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTopLeft");
 		buildWallTopLeftButton.addGuiListener(this);
 		newWindow.addWidget(buildWallTopLeftButton);
 		
 		// Top right corner wall
 		widthOffset += 80;
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_topright_active")));		
-		Button buildWallTopRightButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTopRight");
+		Button buildWallTopRightButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTopRight");
 		buildWallTopRightButton.addGuiListener(this);
 		newWindow.addWidget(buildWallTopRightButton);
 		
 		// Bottom right corner wall
 		widthOffset += 80;
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_bottomright_active")));		
-		Button buildWallBottomRightButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildBottomRight");
+		Button buildWallBottomRightButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildBottomRight");
 		buildWallBottomRightButton.addGuiListener(this);
 		newWindow.addWidget(buildWallBottomRightButton);
 		
 		// Bottom left corner wall
 		widthOffset += 80;
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_bottomleft_active")));		
-		Button buildWallBottomLeftButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildBottomLeft");
+		Button buildWallBottomLeftButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildBottomLeft");
 		buildWallBottomLeftButton.addGuiListener(this);
 		newWindow.addWidget(buildWallBottomLeftButton);
 		
@@ -328,39 +366,39 @@ public class Game implements GuiListener, ActionListener {
 		
 		// T Top		
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_T_top_active")));		
-		Button buildWallTTopButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTTop");
+		Button buildWallTTopButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTTop");
 		buildWallTTopButton.addGuiListener(this);
 		newWindow.addWidget(buildWallTTopButton);			
 		
 		// T Bottom
 		widthOffset += 80;
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_T_bottom_active")));		
-		Button buildWallTBottomButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTBottom");
+		Button buildWallTBottomButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTBottom");
 		buildWallTBottomButton.addGuiListener(this);
 		newWindow.addWidget(buildWallTBottomButton);	
 		
 		// T Left
 		widthOffset += 80;
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_T_left_active")));		
-		Button buildWallTLeftButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTLeft");
+		Button buildWallTLeftButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTLeft");
 		buildWallTLeftButton.addGuiListener(this);
 		newWindow.addWidget(buildWallTLeftButton);		
 		
 		// T Right
 		widthOffset += 80;
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_T_right_active")));		
-		Button buildWallTRightButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTRight");
+		Button buildWallTRightButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildTRight");
 		buildWallTRightButton.addGuiListener(this);
 		newWindow.addWidget(buildWallTRightButton);	
 		
 		// Cross
 		widthOffset += 80;
 		newWindow.addWidget(new PictureBox("WallBuildMenu", widthOffset, heightOffset, 48, 48, Config.getTextureManager().getTextureByKey("wall_cross_active")));		
-		Button buildWallCrossButton = new Button("WallBuildMenu", EventActionType.OTHER, widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildCross");
+		Button buildWallCrossButton = new Button("WallBuildMenu", widthOffset - 10, heightOffset + 50, 70, 20, "Build", "WallBuildCross");
 		buildWallCrossButton.addGuiListener(this);
 		newWindow.addWidget(buildWallCrossButton);		
 		
-		Button closeButton = new Button("BuildMenu", EventActionType.CLOSE, 10, 210, "Close", "CloseWallBuildMenu");
+		Button closeButton = new Button("BuildMenu", 10, 210, "Close", "CloseWallBuildMenu");
 		closeButton.addGuiListener(this);
 		newWindow.addWidget(closeButton);
 		
@@ -379,6 +417,16 @@ public class Game implements GuiListener, ActionListener {
 				windowList.remove("IntroDialog");
 			}
 		}
+		
+		/**
+		 * WorldMap loading dialog
+		 */
+		if(winId.equals("LoadDialog")) {
+			if(event.getObjectId().equals("Ok")) {
+				windowList.remove("LoadDialog");
+			}
+		}
+		
 		/*
 		 * Statusbar events
 		 */
@@ -412,8 +460,8 @@ public class Game implements GuiListener, ActionListener {
 				} else {
 					localMapActive = true;
 				}
-								
 				
+				infoBar.updateMapButton(localMapActive);								
 			}
 		}
 		

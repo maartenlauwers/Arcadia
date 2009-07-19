@@ -11,7 +11,6 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.TrueTypeFont;
 
 import engine.Config;
-import engine.gui.EventActionType;
 import engine.gui.GuiEvent;
 import engine.gui.GuiListener;
 
@@ -19,7 +18,6 @@ import engine.gui.GuiListener;
 public class Button implements Widget {
 	
 	private String id;
-	private EventActionType eat;
 	
 	private String text;
 	private String textId;
@@ -42,10 +40,9 @@ public class Button implements Widget {
 	/*
 	 * Constructor with default width and height
 	 */
-	public Button(String id, EventActionType eat, int x, int y, String text, String textId) {
+	public Button(String id, int x, int y, String text, String textId) {
 		this.id = id;
 		this.textId = textId;
-		this.eat = eat;
 		this.x = x;
 		this.y = y;		
 		this.text = text;		
@@ -65,10 +62,9 @@ public class Button implements Widget {
 	/*
 	 * Constructor with specified width and height
 	 */
-	public Button(String id, EventActionType eat, int x, int y, int width, int height, String text, String textId) {
+	public Button(String id, int x, int y, int width, int height, String text, String textId) {
 		this.id = id;
 		this.textId = textId;
-		this.eat = eat;
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -87,11 +83,10 @@ public class Button implements Widget {
 	/*
 	 * Constructor with specified width and height and textures
 	 */
-	public Button(String id, EventActionType eat, int x, int y, int width, int height, 
+	public Button(String id, int x, int y, int width, int height, 
 			Image texture_button, Image texture_button_active, Image texture_button_pressed, String text, String textId) {
 		this.id = id;
 		this.textId = textId;
-		this.eat = eat;
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -182,7 +177,7 @@ public class Button implements Widget {
 	 * Informs all listener objects about any gui event that just happened.
 	 */
 	private synchronized void informListeners() {
-		GuiEvent ge = new GuiEvent(this, id, textId, eat);
+		GuiEvent ge = new GuiEvent(this, id, textId);
 		for(GuiListener gl : listenerList) {
 			gl.eventReceived(ge);
 		}		
