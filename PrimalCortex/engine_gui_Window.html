@@ -1,0 +1,172 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   </head>
+   <body>
+      <table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%">
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="engine.gui.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr></tbody>
+      </table>
+      <hr>
+      <h2><font size="-1">engine.gui</font></h2><span style="font-size:large; font-weight:bold">Interface&nbsp;</span><span style="font-size:large; font-weight:bold">Window</span><br><br>public <b>Window</b><br><p>Defines required methods for a gui window (which in turn contains widgets)
+          
+          
+      </p><br><br><br><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Method Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#231">getX</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#232">setX</a>(int x)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#233">getY</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#234">setY</a>(int y)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#235">getWidth</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#236">setWidth</a>(int width)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#237">getHeight</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#238">setHeight</a>(int height)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#239">draw</a>(org.newdawn.slick.Graphics g)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#240">addWidget</a>(<a href="engine_gui_widgets_Widget.html">Widget</a> w)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public <a href="engine_gui_WindowStatus.html">WindowStatus</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#241">getStatus</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#242">setStatus</a>(<a href="engine_gui_WindowStatus.html">WindowStatus</a> status)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#243">isMouseOver</a>(int mouseX, int mouseY)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public boolean </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#244">isMouseClicked</a>(int mouseX, int mouseY)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public java.lang.String</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#245">getId</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><br><br><br><br><br><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Method Detail</span></td>
+      </tr></table><a name="231"><span style="font-size:medium">getX</span></a><br><br><pre>public int  <b>getX</b>()</pre><br><dl><br></dl>
+      <hr><a name="232"><span style="font-size:medium">setX</span></a><br><br><pre>public void  <b>setX</b>(int x)</pre><br><dl><br></dl>
+      <hr><a name="233"><span style="font-size:medium">getY</span></a><br><br><pre>public int  <b>getY</b>()</pre><br><dl><br></dl>
+      <hr><a name="234"><span style="font-size:medium">setY</span></a><br><br><pre>public void  <b>setY</b>(int y)</pre><br><dl><br></dl>
+      <hr><a name="235"><span style="font-size:medium">getWidth</span></a><br><br><pre>public int  <b>getWidth</b>()</pre><br><dl><br></dl>
+      <hr><a name="236"><span style="font-size:medium">setWidth</span></a><br><br><pre>public void  <b>setWidth</b>(int width)</pre><br><dl><br></dl>
+      <hr><a name="237"><span style="font-size:medium">getHeight</span></a><br><br><pre>public int  <b>getHeight</b>()</pre><br><dl><br></dl>
+      <hr><a name="238"><span style="font-size:medium">setHeight</span></a><br><br><pre>public void  <b>setHeight</b>(int height)</pre><br><dl><br></dl>
+      <hr><a name="239"><span style="font-size:medium">draw</span></a><br><br><pre>public void  <b>draw</b>(org.newdawn.slick.Graphics g)</pre><br><dl><br></dl>
+      <hr><a name="240"><span style="font-size:medium">addWidget</span></a><br><br><pre>public void  <b>addWidget</b>(<a href="engine_gui_widgets_Widget.html">Widget</a> w)</pre><br><dl><br></dl>
+      <hr><a name="241"><span style="font-size:medium">getStatus</span></a><br><br><pre>public <a href="engine_gui_WindowStatus.html">WindowStatus</a> <b>getStatus</b>()</pre><br><dl><br></dl>
+      <hr><a name="242"><span style="font-size:medium">setStatus</span></a><br><br><pre>public void  <b>setStatus</b>(<a href="engine_gui_WindowStatus.html">WindowStatus</a> status)</pre><br><dl><br></dl>
+      <hr><a name="243"><span style="font-size:medium">isMouseOver</span></a><br><br><pre>public void  <b>isMouseOver</b>(int mouseX, int mouseY)</pre><br><dl><br></dl>
+      <hr><a name="244"><span style="font-size:medium">isMouseClicked</span></a><br><br><pre>public boolean  <b>isMouseClicked</b>(int mouseX, int mouseY)</pre><br><dl><br></dl>
+      <hr><a name="245"><span style="font-size:medium">getId</span></a><br><br><pre>public java.lang.String <b>getId</b>()</pre><br><dl><br></dl>
+      <hr><br><br><table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%">
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="engine.gui.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr></tbody>
+      </table>
+      <hr><br><br><center><span style="font-size:xx-small">This documentation has been generated by EclipseUML.</span></center><br></body>
+</html>

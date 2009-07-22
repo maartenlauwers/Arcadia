@@ -41,6 +41,8 @@ import game.tile.TileType;
 
 public class Game implements GuiListener, ActionListener {
 
+	private final String MAPFILE = "map.kac";
+	
 	private Core engine;	
 	private TextureManager textureManager;
 	
@@ -116,31 +118,24 @@ public class Game implements GuiListener, ActionListener {
 		
 		try {
 			 
-			 BufferedReader in = new BufferedReader(new FileReader("map.kac"));
+			 BufferedReader in = new BufferedReader(new FileReader(MAPFILE));
 			 			 		
-			 int nrHorizontalTiles = new Integer(in.readLine()).intValue();
-			 System.out.println("Horizontal tiles: " + nrHorizontalTiles);
-			 int nrVerticalTiles = new Integer(in.readLine()).intValue();
-			 System.out.println("Vertical tiles: " + nrVerticalTiles);
-			 int tileWidth = new Integer(in.readLine()).intValue();
-			 System.out.println("Horizontal tiles: " + tileWidth);
-			 int tileHeight = new Integer(in.readLine()).intValue();
-			 System.out.println("Horizontal tiles: " + tileHeight);
+			 int nrHorizontalTiles = new Integer(in.readLine()).intValue();			 
+			 int nrVerticalTiles = new Integer(in.readLine()).intValue();			 
+			 int tileWidth = new Integer(in.readLine()).intValue();			 
+			 int tileHeight = new Integer(in.readLine()).intValue();			 
 			 
 			 worldMap = new WorldMap(Config.getScreenWidth(), Config.getScreenHeight(), nrHorizontalTiles, nrVerticalTiles, tileWidth, tileHeight);
 			 
 			 char[][] tokens = new char[nrHorizontalTiles][nrVerticalTiles];			 
 			 for(int i=0; i<nrVerticalTiles; i++) {
-				 
-				 StringBuffer test = new StringBuffer();
+				 				 
 				 String line = in.readLine();
 				 if(line != null) {
 					 for (int j=0; j<nrHorizontalTiles; j++) {    			
-						 tokens[j][i] = line.charAt(j);
-						 test.append(line.charAt(j));
+						 tokens[j][i] = line.charAt(j);				
 					 }	 
-				 }		
-				 System.out.println(test.toString());
+				 }					
 			 }
 
 			 
@@ -197,7 +192,7 @@ public class Game implements GuiListener, ActionListener {
 	
 	public void updateStatusBar() {
 		// Update the statusbar
-		statusBar.update("" + kingdom.getPopulation(), "Gold: " + kingdom.getWealth(), "" + kingdom.getFood(), "");
+		statusBar.update("" + kingdom.getPopulation(), "" + kingdom.getWealth(), "" + kingdom.getFood(), "");
 	}
 	
 	public void createInfoBar() {

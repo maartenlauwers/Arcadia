@@ -22,6 +22,7 @@ public class StatusBar {
 	private Label trainLabel;
 	private PictureBox populationPicture;
 	private PictureBox foodPicture;
+	private PictureBox goldPicture;
 	private Label populationLabel;
 	private Button btnDestroy;
 	private Button btnBuild;	
@@ -52,14 +53,15 @@ public class StatusBar {
 		populationPicture = new PictureBox("Statusbar", offset, 5, 16, 16, Config.getTextureManager().getTextureByKey("population_icon"));
 		populationLabel = new Label("Statusbar", offset + 20, 5, "" + kingdom.getPopulation());
 		
-		offset = offset + ttf.getWidth(populationLabel.getText()) + 50;
-		goldLabel = new Label("Statusbar", offset , 5, "Gold: " + kingdom.getWealth());
+		offset = offset + ttf.getWidth(populationLabel.getText()) + 30;
+		goldPicture = new PictureBox("Statusbar", offset, 5, 16, 16, Config.getTextureManager().getTextureByKey("gold_icon"));
+		goldLabel = new Label("Statusbar", offset + 20, 5, "" + kingdom.getWealth());
 		
-		offset = offset + ttf.getWidth(goldLabel.getText()) + 25;
+		offset = offset + ttf.getWidth(goldLabel.getText()) + 30;
 		foodPicture = new PictureBox("Statusbar", offset, 5, 32, 24, Config.getTextureManager().getTextureByKey("food_icon"));
 		foodLabel = new Label("Statusbar", offset + 36, 5, "" + kingdom.getFood());
 		
-		offset = offset + ttf.getWidth(foodLabel.getText()) + 25;
+		offset = offset + ttf.getWidth(foodLabel.getText()) + 30;
 		trainLabel = new Label("Statusbar", offset , 5, "");
 							
 		btnDestroy = new Button("Statusbar", window.getWidth() - 360, 5, "Destroy", "Destroy");
@@ -79,6 +81,7 @@ public class StatusBar {
 		window.addWidget(kingdomLabel);
 		window.addWidget(populationPicture);
 		window.addWidget(populationLabel);
+		window.addWidget(goldPicture);
 		window.addWidget(goldLabel);
 		window.addWidget(foodPicture);
 		window.addWidget(foodLabel);
@@ -115,15 +118,15 @@ public class StatusBar {
 		populationLabel.setX(offset + 20);
 		populationLabel.setText(messagePopulation);
 		
-		offset = offset + ttf.getWidth(populationLabel.getText()) + 50;
-		goldLabel.setX(offset);
+		offset = offset + ttf.getWidth(populationLabel.getText()) + 30;
+		goldLabel.setX(offset + 20);
 		goldLabel.setText(messageGold);
 		
-		offset = offset + ttf.getWidth(goldLabel.getText()) + 25;
+		offset = offset + ttf.getWidth(goldLabel.getText()) + 30;
 		foodLabel.setX(offset + 36);
 		foodLabel.setText(messageFood);
 		
-		offset = offset + ttf.getWidth(foodLabel.getText()) + 25;
+		offset = offset + ttf.getWidth(foodLabel.getText()) + 30;
 		trainLabel.setX(offset);
 		trainLabel.setText(messageTraining);				
 	}

@@ -1,0 +1,428 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   </head>
+   <body>
+      <table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%">
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="game.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr></tbody>
+      </table>
+      <hr>
+      <h2><font size="-1">game</font></h2><span style="font-size:large; font-weight:bold">Class&nbsp;</span><span style="font-size:large; font-weight:bold">Game</span><br><br>public <b>Game</b><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Field Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private final java.lang.String</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#513">MAPFILE</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="engine_Core.html">Core</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#514">engine</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="engine_TextureManager.html">TextureManager</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#515">textureManager</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="game_Kingdom.html">Kingdom</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#516">kingdom</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="game_map_Map.html">Map</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#517">localMap</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="game_map_Map.html">Map</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#518">worldMap</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private boolean</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#519">localMapActive</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="game_InputController.html">InputController</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#520">inputController</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private java.util.List</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#521">structureList</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="game_StatusBar.html">StatusBar</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#522">statusBar</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="game_InfoBar.html">InfoBar</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#523">infoBar</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="game_TownInfoView.html">TownInfoView</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#524">townInfoView</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private boolean</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#525">underConstruction</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#526">hovelAmount</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private final double</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#527">taxRate</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#528">lastTaxIncome</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#529">lastFoodProduction</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private javax.swing.Timer</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#530">gameTimer</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="engine_DualMap.html">DualMap</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#531">windowList</a></code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Constructor Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#533">Game</a>(<a href="engine_Core.html">Core</a> engine)</code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Method Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public <a href="game_map_LocalMap.html">LocalMap</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#535">getLocalMap</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public <a href="game_map_WorldMap.html">WorldMap</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#536">getWorldMap</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public boolean </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#537">onLocalMap</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#538">loadMap</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public <a href="game_Kingdom.html">Kingdom</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#539">getKingdom</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#540">addStructure</a>(<a href="game_structures_Structure.html">Structure</a> s)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#541">removeStructure</a>(<a href="game_structures_Structure.html">Structure</a> s)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public java.util.List</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#542">getStructures</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#543">createStatusBar</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#544">updateStatusBar</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#545">createInfoBar</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#546">createTownInfoView</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#547">updateTownInfoView</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#548">createWelcomeDialog</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#549">createBuildMenu</a>()</code><br> <font>Creates the build menu</font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#550">createWallBuildMenu</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#551">eventReceived</a>(<a href="engine_gui_GuiEvent.html">GuiEvent</a> event)</code><br> <font>Handles all received GUI events</font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#552">updateGUIElements</a>()</code><br> <font>Updates all GUI elements (the contents of the update are defined by the element itself)</font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#553">checkGUIHover</a>(int mouseX, int mouseY)</code><br> <font>Checks all GUI elements for mouse hover
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public boolean </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#554">checkGUIClicked</a>(int mouseX, int mouseY)</code><br> <font>Checks all GUI elements for mouse clicks
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#555">drawGUIElements</a>(org.newdawn.slick.Graphics g)</code><br> <font>Draws all GUI elements on the screen.</font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#556">actionPerformed</a>(java.awt.event.ActionEvent e)</code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Field Detail</span></td>
+      </tr></table><a name="513"><span style="font-size:larger">MAPFILE</span></a><br><br><pre>private final java.lang.String <b>MAPFILE</b></pre><br><dl></dl><br><hr><a name="514"><span style="font-size:larger">engine</span></a><br><br><pre>private <a href="engine_Core.html">Core</a> <b>engine</b></pre><br><dl></dl><br><hr><a name="515"><span style="font-size:larger">textureManager</span></a><br><br><pre>private <a href="engine_TextureManager.html">TextureManager</a> <b>textureManager</b></pre><br><dl></dl><br><hr><a name="516"><span style="font-size:larger">kingdom</span></a><br><br><pre>private <a href="game_Kingdom.html">Kingdom</a> <b>kingdom</b></pre><br><dl></dl><br><hr><a name="517"><span style="font-size:larger">localMap</span></a><br><br><pre>private <a href="game_map_Map.html">Map</a> <b>localMap</b></pre><br><dl></dl><br><hr><a name="518"><span style="font-size:larger">worldMap</span></a><br><br><pre>private <a href="game_map_Map.html">Map</a> <b>worldMap</b></pre><br><dl></dl><br><hr><a name="519"><span style="font-size:larger">localMapActive</span></a><br><br><pre>private boolean <b>localMapActive</b></pre><br><dl></dl><br><hr><a name="520"><span style="font-size:larger">inputController</span></a><br><br><pre>private <a href="game_InputController.html">InputController</a> <b>inputController</b></pre><br><dl></dl><br><hr><a name="521"><span style="font-size:larger">structureList</span></a><br><br><pre>private java.util.List <b>structureList</b></pre><br><dl></dl><br><hr><a name="522"><span style="font-size:larger">statusBar</span></a><br><br><pre>private <a href="game_StatusBar.html">StatusBar</a> <b>statusBar</b></pre><br><dl></dl><br><hr><a name="523"><span style="font-size:larger">infoBar</span></a><br><br><pre>private <a href="game_InfoBar.html">InfoBar</a> <b>infoBar</b></pre><br><dl></dl><br><hr><a name="524"><span style="font-size:larger">townInfoView</span></a><br><br><pre>private <a href="game_TownInfoView.html">TownInfoView</a> <b>townInfoView</b></pre><br><dl></dl><br><hr><a name="525"><span style="font-size:larger">underConstruction</span></a><br><br><pre>private boolean <b>underConstruction</b></pre><br><dl></dl><br><hr><a name="526"><span style="font-size:larger">hovelAmount</span></a><br><br><pre>private int <b>hovelAmount</b></pre><br><dl></dl><br><hr><a name="527"><span style="font-size:larger">taxRate</span></a><br><br><pre>private final double <b>taxRate</b></pre><br><dl></dl><br><hr><a name="528"><span style="font-size:larger">lastTaxIncome</span></a><br><br><pre>private int <b>lastTaxIncome</b></pre><br><dl></dl><br><hr><a name="529"><span style="font-size:larger">lastFoodProduction</span></a><br><br><pre>private int <b>lastFoodProduction</b></pre><br><dl></dl><br><hr><a name="530"><span style="font-size:larger">gameTimer</span></a><br><br><pre>private javax.swing.Timer <b>gameTimer</b></pre><br><dl></dl><br><hr><a name="531"><span style="font-size:larger">windowList</span></a><br><br><pre>private <a href="engine_DualMap.html">DualMap</a> <b>windowList</b></pre><br><dl></dl><br><hr><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Constructor Detail</span></td>
+      </tr></table><span style="font-size:medium"><a name="533"><span style="font-size:medium">Game</span></a></span><br><pre>public <b>Game</b>(<a href="engine_Core.html">Core</a> engine)</pre><br><dl><br></dl>
+      <hr><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Method Detail</span></td>
+      </tr></table><a name="535"><span style="font-size:medium">getLocalMap</span></a><br><br><pre>public <a href="game_map_LocalMap.html">LocalMap</a> <b>getLocalMap</b>()</pre><br><dl><br></dl>
+      <hr><a name="536"><span style="font-size:medium">getWorldMap</span></a><br><br><pre>public <a href="game_map_WorldMap.html">WorldMap</a> <b>getWorldMap</b>()</pre><br><dl><br></dl>
+      <hr><a name="537"><span style="font-size:medium">onLocalMap</span></a><br><br><pre>public boolean  <b>onLocalMap</b>()</pre><br><dl><br></dl>
+      <hr><a name="538"><span style="font-size:medium">loadMap</span></a><br><br><pre>public void  <b>loadMap</b>()</pre><br><dl><br></dl>
+      <hr><a name="539"><span style="font-size:medium">getKingdom</span></a><br><br><pre>public <a href="game_Kingdom.html">Kingdom</a> <b>getKingdom</b>()</pre><br><dl><br></dl>
+      <hr><a name="540"><span style="font-size:medium">addStructure</span></a><br><br><pre>public void  <b>addStructure</b>(<a href="game_structures_Structure.html">Structure</a> s)</pre><br><dl><br></dl>
+      <hr><a name="541"><span style="font-size:medium">removeStructure</span></a><br><br><pre>public void  <b>removeStructure</b>(<a href="game_structures_Structure.html">Structure</a> s)</pre><br><dl><br></dl>
+      <hr><a name="542"><span style="font-size:medium">getStructures</span></a><br><br><pre>public java.util.List <b>getStructures</b>()</pre><br><dl><br></dl>
+      <hr><a name="543"><span style="font-size:medium">createStatusBar</span></a><br><br><pre>public void  <b>createStatusBar</b>()</pre><br><dl><br></dl>
+      <hr><a name="544"><span style="font-size:medium">updateStatusBar</span></a><br><br><pre>public void  <b>updateStatusBar</b>()</pre><br><dl><br></dl>
+      <hr><a name="545"><span style="font-size:medium">createInfoBar</span></a><br><br><pre>public void  <b>createInfoBar</b>()</pre><br><dl><br></dl>
+      <hr><a name="546"><span style="font-size:medium">createTownInfoView</span></a><br><br><pre>public void  <b>createTownInfoView</b>()</pre><br><dl><br></dl>
+      <hr><a name="547"><span style="font-size:medium">updateTownInfoView</span></a><br><br><pre>public void  <b>updateTownInfoView</b>()</pre><br><dl><br></dl>
+      <hr><a name="548"><span style="font-size:medium">createWelcomeDialog</span></a><br><br><pre>public void  <b>createWelcomeDialog</b>()</pre><br><dl><br></dl>
+      <hr><a name="549"><span style="font-size:medium">createBuildMenu</span></a><br><br><pre>public void  <b>createBuildMenu</b>()</pre><br><dl>
+         <p>Creates the build menu</p><br></dl>
+      <hr><a name="550"><span style="font-size:medium">createWallBuildMenu</span></a><br><br><pre>public void  <b>createWallBuildMenu</b>()</pre><br><dl><br></dl>
+      <hr><a name="551"><span style="font-size:medium">eventReceived</span></a><br><br><pre>public void  <b>eventReceived</b>(<a href="engine_gui_GuiEvent.html">GuiEvent</a> event)</pre><br><dl>
+         <p>Handles all received GUI events</p><br></dl>
+      <hr><a name="552"><span style="font-size:medium">updateGUIElements</span></a><br><br><pre>public void  <b>updateGUIElements</b>()</pre><br><dl>
+         <p>Updates all GUI elements (the contents of the update are defined by the element itself)</p><br></dl>
+      <hr><a name="553"><span style="font-size:medium">checkGUIHover</span></a><br><br><pre>public void  <b>checkGUIHover</b>(int mouseX, int mouseY)</pre><br><dl>
+         <p>Checks all GUI elements for mouse hover
+             
+             
+         </p><br></dl>
+      <hr><a name="554"><span style="font-size:medium">checkGUIClicked</span></a><br><br><pre>public boolean  <b>checkGUIClicked</b>(int mouseX, int mouseY)</pre><br><dl>
+         <p>Checks all GUI elements for mouse clicks
+             
+             
+         </p><br></dl>
+      <hr><a name="555"><span style="font-size:medium">drawGUIElements</span></a><br><br><pre>public void  <b>drawGUIElements</b>(org.newdawn.slick.Graphics g)</pre><br><dl>
+         <p>Draws all GUI elements on the screen. The elements are drawn in the order they were added.
+             
+             
+         </p><br></dl>
+      <hr><a name="556"><span style="font-size:medium">actionPerformed</span></a><br><br><pre>public void  <b>actionPerformed</b>(java.awt.event.ActionEvent e)</pre><br><dl><br></dl>
+      <hr><br><br><table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%">
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="game.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr></tbody>
+      </table>
+      <hr><br><br><center><span style="font-size:xx-small">This documentation has been generated by EclipseUML.</span></center><br></body>
+</html>

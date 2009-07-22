@@ -1,0 +1,355 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   </head>
+   <body>
+      <table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%">
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="game.structures.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr>
+      </table>
+      <hr>
+      <h2><font size="-1">game.structures</font></h2><span style="font-size:large; font-weight:bold">Class&nbsp;</span><span style="font-size:large; font-weight:bold">Structure</span><br><br>public abstract <b>Structure</b><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Field Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private org.newdawn.slick.Image</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#630">texture_construction</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private org.newdawn.slick.Image</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#631">texture_active</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private org.newdawn.slick.Image</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#632">texture_destroyed</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private java.lang.String</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#633">name</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#634">cost</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#635">timeToBuild</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#636">health</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#637">currentLevel</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private <a href="game_structures_StructureState.html">StructureState</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#638">currentState</a></code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Constructor Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#640">Structure</a>(java.lang.String name, int cost, int timeToBuild, org.newdawn.slick.Image texture_construction, org.newdawn.slick.Image texture_active, org.newdawn.slick.Image texture_destroyed)</code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Method Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#642">build</a>(int timeToBuild)</code><br> <font>Starts the building process of this structure
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#643">destroy</a>()</code><br> <font>Destroys the current building</font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public java.lang.String</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#644">getName</a>()</code><br> <font>Returns the name of the structure
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#645">getCost</a>()</code><br> <font>Returns the cost of the structure
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#646">setHealth</a>(int health)</code><br> <font>Returns the health of this structure
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#647">getHealth</a>()</code><br> <font>Returns the health of this structure
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#648">getTimeToBuild</a>()</code><br> <font>Returns the time to build this structure
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#649">getBuildProgress</a>()</code><br> <font>Returns the construction progress of the structure
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#650">getCurrentLevel</a>()</code><br> <font>Returns the current level of the structure
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#651">setCurrentLevel</a>(int currentLevel)</code><br> <font>Sets the current level of the structure
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public org.newdawn.slick.Image</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#652">getTexture</a>()</code><br> <font>Returns the texture of this structure based on its status
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public boolean </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#653">isConstructed</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public boolean </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#654">isActive</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public boolean </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#655">isDestroyed</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#656">setState</a>(<a href="game_structures_StructureState.html">StructureState</a> state)</code><br> <font>Sets the state of this structure object
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public java.lang.String</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#657">toString</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public abstract <a href="game_structures_StructureType.html">StructureType</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#658">getType</a>()</code><br> <font>Returns the type of the structure (Farm, market, .</font>&nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Field Detail</span></td>
+      </tr></table><a name="630"><span style="font-size:larger">texture_construction</span></a><br><br><pre>private org.newdawn.slick.Image <b>texture_construction</b></pre><br><dl></dl><br><hr><a name="631"><span style="font-size:larger">texture_active</span></a><br><br><pre>private org.newdawn.slick.Image <b>texture_active</b></pre><br><dl></dl><br><hr><a name="632"><span style="font-size:larger">texture_destroyed</span></a><br><br><pre>private org.newdawn.slick.Image <b>texture_destroyed</b></pre><br><dl></dl><br><hr><a name="633"><span style="font-size:larger">name</span></a><br><br><pre>private java.lang.String <b>name</b></pre><br><dl></dl><br><hr><a name="634"><span style="font-size:larger">cost</span></a><br><br><pre>private int <b>cost</b></pre><br><dl></dl><br><hr><a name="635"><span style="font-size:larger">timeToBuild</span></a><br><br><pre>private int <b>timeToBuild</b></pre><br><dl></dl><br><hr><a name="636"><span style="font-size:larger">health</span></a><br><br><pre>private int <b>health</b></pre><br><dl></dl><br><hr><a name="637"><span style="font-size:larger">currentLevel</span></a><br><br><pre>private int <b>currentLevel</b></pre><br><dl></dl><br><hr><a name="638"><span style="font-size:larger">currentState</span></a><br><br><pre>private <a href="game_structures_StructureState.html">StructureState</a> <b>currentState</b></pre><br><dl></dl><br><hr><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Constructor Detail</span></td>
+      </tr></table><span style="font-size:medium"><a name="640"><span style="font-size:medium">Structure</span></a></span><br><pre>public <b>Structure</b>(java.lang.String name, int cost, int timeToBuild, org.newdawn.slick.Image texture_construction, org.newdawn.slick.Image texture_active, org.newdawn.slick.Image texture_destroyed)</pre><br><dl><br></dl>
+      <hr><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Method Detail</span></td>
+      </tr></table><a name="642"><span style="font-size:medium">build</span></a><br><br><pre>public void  <b>build</b>(int timeToBuild)</pre><br><dl>
+         <p>Starts the building process of this structure
+             
+             
+         </p><br></dl>
+      <hr><a name="643"><span style="font-size:medium">destroy</span></a><br><br><pre>public void  <b>destroy</b>()</pre><br><dl>
+         <p>Destroys the current building</p><br></dl>
+      <hr><a name="644"><span style="font-size:medium">getName</span></a><br><br><pre>public java.lang.String <b>getName</b>()</pre><br><dl>
+         <p>Returns the name of the structure
+             
+             
+         </p><br></dl>
+      <hr><a name="645"><span style="font-size:medium">getCost</span></a><br><br><pre>public int  <b>getCost</b>()</pre><br><dl>
+         <p>Returns the cost of the structure
+             
+             
+         </p><br></dl>
+      <hr><a name="646"><span style="font-size:medium">setHealth</span></a><br><br><pre>public void  <b>setHealth</b>(int health)</pre><br><dl>
+         <p>Returns the health of this structure
+             
+             
+         </p><br></dl>
+      <hr><a name="647"><span style="font-size:medium">getHealth</span></a><br><br><pre>public int  <b>getHealth</b>()</pre><br><dl>
+         <p>Returns the health of this structure
+             
+             
+         </p><br></dl>
+      <hr><a name="648"><span style="font-size:medium">getTimeToBuild</span></a><br><br><pre>public int  <b>getTimeToBuild</b>()</pre><br><dl>
+         <p>Returns the time to build this structure
+             
+             
+         </p><br></dl>
+      <hr><a name="649"><span style="font-size:medium">getBuildProgress</span></a><br><br><pre>public int  <b>getBuildProgress</b>()</pre><br><dl>
+         <p>Returns the construction progress of the structure
+             
+             
+         </p><br></dl>
+      <hr><a name="650"><span style="font-size:medium">getCurrentLevel</span></a><br><br><pre>public int  <b>getCurrentLevel</b>()</pre><br><dl>
+         <p>Returns the current level of the structure
+             
+             
+         </p><br></dl>
+      <hr><a name="651"><span style="font-size:medium">setCurrentLevel</span></a><br><br><pre>public void  <b>setCurrentLevel</b>(int currentLevel)</pre><br><dl>
+         <p>Sets the current level of the structure
+             
+             
+         </p><br></dl>
+      <hr><a name="652"><span style="font-size:medium">getTexture</span></a><br><br><pre>public org.newdawn.slick.Image <b>getTexture</b>()</pre><br><dl>
+         <p>Returns the texture of this structure based on its status
+             
+             
+         </p><br></dl>
+      <hr><a name="653"><span style="font-size:medium">isConstructed</span></a><br><br><pre>public boolean  <b>isConstructed</b>()</pre><br><dl><br></dl>
+      <hr><a name="654"><span style="font-size:medium">isActive</span></a><br><br><pre>public boolean  <b>isActive</b>()</pre><br><dl><br></dl>
+      <hr><a name="655"><span style="font-size:medium">isDestroyed</span></a><br><br><pre>public boolean  <b>isDestroyed</b>()</pre><br><dl><br></dl>
+      <hr><a name="656"><span style="font-size:medium">setState</span></a><br><br><pre>public void  <b>setState</b>(<a href="game_structures_StructureState.html">StructureState</a> state)</pre><br><dl>
+         <p>Sets the state of this structure object
+             
+             
+         </p><br></dl>
+      <hr><a name="657"><span style="font-size:medium">toString</span></a><br><br><pre>public java.lang.String <b>toString</b>()</pre><br><dl><br></dl>
+      <hr><a name="658"><span style="font-size:medium">getType</span></a><br><br><pre>public abstract <a href="game_structures_StructureType.html">StructureType</a> <b>getType</b>()</pre><br><dl>
+         <p>Returns the type of the structure (Farm, market, ...)
+             
+             
+         </p><br></dl>
+      <hr><br><br><table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%">
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="game.structures.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr>
+      </table>
+      <hr><br><br><center><span style="font-size:xx-small">This documentation has been generated by EclipseUML.</span></center><br></body>
+</html>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg3295"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="gold.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs3297">
+    <linearGradient
+       id="linearGradient3265">
+      <stop
+         id="stop3273"
+         offset="0"
+         style="stop-color:#deda1c;stop-opacity:1;" />
+      <stop
+         style="stop-color:#f2e716;stop-opacity:1;"
+         offset="0.67391306"
+         id="stop3283" />
+      <stop
+         style="stop-color:#e4de92;stop-opacity:1;"
+         offset="1"
+         id="stop3269" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3265"
+       id="radialGradient3293"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.1151316,-18.928571,-96.28085)"
+       cx="-747.14288"
+       cy="616.02289"
+       fx="-747.14288"
+       fy="616.02289"
+       r="5.4285698" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective3303" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="299.4093"
+     inkscape:cy="849.15285"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="640"
+     inkscape:window-height="674"
+     inkscape:window-x="319"
+     inkscape:window-y="50" />
+  <metadata
+     id="metadata3300">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3289"
+       transform="matrix(1.4381304,0,0,1.245933,1375.6556,-537.54046)"
+       inkscape:export-filename="/home/elegia/workspace/PrimalCortex/bin/gold_icon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         id="path3285"
+         d="M -761.96428,587.63004 L -763.92857,586.0229 L -767.32143,586.20147 L -769.64286,587.63004 L -770.53571,588.16576 L -770.71428,593.34433 L -769.64286,595.84433 L -767.85714,597.2729 L -764.28571,597.63004 L -761.25,595.48719 L -760.35714,593.70147 L -760.71428,588.5229 L -761.96428,587.63004 z"
+         style="fill:#000000;fill-opacity:0.88053098;fill-rule:evenodd;stroke:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.88235294" />
+      <path
+         id="path2493"
+         d="M -762.5,586.46932 L -764.46429,584.86218 L -767.85715,585.04075 L -770.17858,586.46932 L -771.07143,587.00504 L -771.25,592.18361 L -770.17858,594.68361 L -768.39286,596.11218 L -764.82143,596.46932 L -761.78572,594.32647 L -760.89286,592.54075 L -761.25,587.36218 L -762.5,586.46932 z"
+         style="fill:url(#radialGradient3293);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>

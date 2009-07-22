@@ -69,6 +69,7 @@ public class ProgressBar implements Widget {
 	
 	public void draw(Graphics g) {		
 		
+		// Align the text to the left of the bar
 		g.drawRect(x, y, width, height);
 		if(progress > 0) {
 			image.draw(x+2, y+2, width/100 * progress - 3, height - 3);

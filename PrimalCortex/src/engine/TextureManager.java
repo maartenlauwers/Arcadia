@@ -69,6 +69,7 @@ public class TextureManager {
 	    	
 	    	Image population_icon = new Image("population_icon.png");
 	    	Image food_icon = new Image("food_icon.png");
+	    	Image gold_icon = new Image("gold_icon.png");
 	    	Image sword_and_shield = new Image("sword_and_shield.png");
 	    	Image sorceress = new Image("sorceress.gif");
 	    	
@@ -125,6 +126,7 @@ public class TextureManager {
 	    	addTextureByKey("progressbar", progressbar);
 	    	addTextureByKey("population_icon", population_icon);
 	    	addTextureByKey("food_icon", food_icon);
+	    	addTextureByKey("gold_icon", gold_icon);
 	    	addTextureByKey("sword_and_shield", sword_and_shield);
 	    	addTextureByKey("sorceress", sorceress);
 	    	

@@ -1,0 +1,222 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   </head>
+   <body>
+      <table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%"><tbody>
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="game.map.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr>
+      </table>
+      <hr>
+      <h2><font size="-1">game.map</font></h2><span style="font-size:large; font-weight:bold">Class&nbsp;</span><span style="font-size:large; font-weight:bold">WorldMap</span><br><br>public <b>WorldMap</b><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Field Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int[][]</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#558">map</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#559">tileWidth</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#560">tileHeight</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#561">nrHorizontalTilesOnScreen</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#562">nrVerticalTilesOnScreen</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#563">offsetX</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#564">offsetY</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private java.util.List</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#565">tileListCopy</a></code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Constructor Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#567">WorldMap</a>(int pixelWidth, int pixelHeight, int nrTilesHorizontal, int nrTilesVertical, int tileWidth, int tileHeight)</code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Method Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#569">getTileWidth</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#570">getTileHeight</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#571">getOffsetX</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#572">getOffsetY</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#573">setMap</a>(int[][] map)</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#574">moveMapRight</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#575">moveMapLeft</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#576">moveMapUp</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#577">moveMapDown</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public java.util.List</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#578">getOnScreenTileList</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#579">draw</a>()</code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Field Detail</span></td>
+      </tr></table><a name="558"><span style="font-size:larger">map</span></a><br><br><pre>private int[][] <b>map</b></pre><br><dl></dl><br><hr><a name="559"><span style="font-size:larger">tileWidth</span></a><br><br><pre>private int <b>tileWidth</b></pre><br><dl></dl><br><hr><a name="560"><span style="font-size:larger">tileHeight</span></a><br><br><pre>private int <b>tileHeight</b></pre><br><dl></dl><br><hr><a name="561"><span style="font-size:larger">nrHorizontalTilesOnScreen</span></a><br><br><pre>private int <b>nrHorizontalTilesOnScreen</b></pre><br><dl></dl><br><hr><a name="562"><span style="font-size:larger">nrVerticalTilesOnScreen</span></a><br><br><pre>private int <b>nrVerticalTilesOnScreen</b></pre><br><dl></dl><br><hr><a name="563"><span style="font-size:larger">offsetX</span></a><br><br><pre>private int <b>offsetX</b></pre><br><dl></dl><br><hr><a name="564"><span style="font-size:larger">offsetY</span></a><br><br><pre>private int <b>offsetY</b></pre><br><dl></dl><br><hr><a name="565"><span style="font-size:larger">tileListCopy</span></a><br><br><pre>private java.util.List <b>tileListCopy</b></pre><br><dl></dl><br><hr><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Constructor Detail</span></td>
+      </tr></table><span style="font-size:medium"><a name="567"><span style="font-size:medium">WorldMap</span></a></span><br><pre>public <b>WorldMap</b>(int pixelWidth, int pixelHeight, int nrTilesHorizontal, int nrTilesVertical, int tileWidth, int tileHeight)</pre><br><dl><br></dl>
+      <hr><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Method Detail</span></td>
+      </tr></table><a name="569"><span style="font-size:medium">getTileWidth</span></a><br><br><pre>public int  <b>getTileWidth</b>()</pre><br><dl><br></dl>
+      <hr><a name="570"><span style="font-size:medium">getTileHeight</span></a><br><br><pre>public int  <b>getTileHeight</b>()</pre><br><dl><br></dl>
+      <hr><a name="571"><span style="font-size:medium">getOffsetX</span></a><br><br><pre>public int  <b>getOffsetX</b>()</pre><br><dl><br></dl>
+      <hr><a name="572"><span style="font-size:medium">getOffsetY</span></a><br><br><pre>public int  <b>getOffsetY</b>()</pre><br><dl><br></dl>
+      <hr><a name="573"><span style="font-size:medium">setMap</span></a><br><br><pre>public void  <b>setMap</b>(int[][] map)</pre><br><dl><br></dl>
+      <hr><a name="574"><span style="font-size:medium">moveMapRight</span></a><br><br><pre>public void  <b>moveMapRight</b>()</pre><br><dl><br></dl>
+      <hr><a name="575"><span style="font-size:medium">moveMapLeft</span></a><br><br><pre>public void  <b>moveMapLeft</b>()</pre><br><dl><br></dl>
+      <hr><a name="576"><span style="font-size:medium">moveMapUp</span></a><br><br><pre>public void  <b>moveMapUp</b>()</pre><br><dl><br></dl>
+      <hr><a name="577"><span style="font-size:medium">moveMapDown</span></a><br><br><pre>public void  <b>moveMapDown</b>()</pre><br><dl><br></dl>
+      <hr><a name="578"><span style="font-size:medium">getOnScreenTileList</span></a><br><br><pre>public java.util.List <b>getOnScreenTileList</b>()</pre><br><dl><br></dl>
+      <hr><a name="579"><span style="font-size:medium">draw</span></a><br><br><pre>public void  <b>draw</b>()</pre><br><dl><br></dl>
+      <hr><br><br><table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%"><tbody>
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="game.map.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr>
+      </table>
+      <hr><br><br><center><span style="font-size:xx-small">This documentation has been generated by EclipseUML.</span></center><br></body>
+</html>

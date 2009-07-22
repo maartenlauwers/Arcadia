@@ -1,0 +1,299 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   </head>
+   <body>
+      <table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%">
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="game.map.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr></tbody>
+      </table>
+      <hr>
+      <h2><font size="-1">game.map</font></h2><span style="font-size:large; font-weight:bold">Class&nbsp;</span><span style="font-size:large; font-weight:bold">Map</span><br><br>public abstract <b>Map</b><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Field Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private java.util.List</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#585">tileList</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#586">pixelWidth</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#587">pixelHeight</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#588">nrTilesHorizontal</a></code><br> &nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>private int</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#589">nrTilesVertical</a></code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Constructor Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#591">Map</a>(int pixelWidth, int pixelHeight, int nrTilesHorizontal, int nrTilesVertical)</code><br> &nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <td bgColor="#CCCCFF" colspan="2"><span style="font-size:large; font-weight:bold">Method Summary</span></td>
+         </tr>
+      </thead><tbody>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#593">getHeight</a>()</code><br> <font>Returns the height (in pixels, NOT the vertical number of tiles) of the map
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#594">getWidth</a>()</code><br> <font>Returns the width (in pixels, NOT the horizontal number of tiles) of the map
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#595">getNrTilesHorizontal</a>()</code><br> <font>Returns the amount of tiles in a single row
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public int </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#596">getNrTilesVertical</a>()</code><br> <font>Returns the amount of tiles in a single column
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#597">addTile</a>(<a href="game_tile_Tile.html">Tile</a> t)</code><br> <font>Adds a new tile to the map
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public java.util.List</code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#598">getTileList</a>()</code><br> <font>Returns a list of all tiles in the map
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public boolean </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#599">checkClicked</a>(int mouseX, int mouseY)</code><br> <font>Checks if a tile was clicked
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public <a href="game_tile_Tile.html">Tile</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#600">getSelectedTile</a>()</code><br> <font>Returns the currently selected tile
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public <a href="game_tile_Tile.html">Tile</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#601">getTileNorthOf</a>(<a href="game_tile_Tile.html">Tile</a> tile)</code><br> <font>Returns the tile north of the currently selected tile
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public <a href="game_tile_Tile.html">Tile</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#602">getTileSouthOf</a>(<a href="game_tile_Tile.html">Tile</a> tile)</code><br> <font>Returns the tile south of the currently selected tile
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public <a href="game_tile_Tile.html">Tile</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#603">getTileWestOf</a>(<a href="game_tile_Tile.html">Tile</a> tile)</code><br> <font>Returns the tile west of the currently selected tile
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public <a href="game_tile_Tile.html">Tile</a></code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#604">getTileEastOf</a>(<a href="game_tile_Tile.html">Tile</a> tile)</code><br> <font>Returns the tile east of the currently selected tile
+                
+                </font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#605">draw</a>()</code><br> <font>Draws every tile on the map</font>&nbsp;
+            										
+         </td>
+      </tr>
+      <tr>
+         <td align="right" valign="top" width="1%"><font size="-1"><code>public void </code></font>&nbsp;
+            										
+         </td>
+         <td><code><a href="#606">draw</a>(int x, int y, int screenWidth, int screenHeight)</code><br> <font>Draws only the tiles that are visible on the screen</font>&nbsp;
+            										
+         </td>
+      </tr></tbody></table><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Field Detail</span></td>
+      </tr></table><a name="585"><span style="font-size:larger">tileList</span></a><br><br><pre>private java.util.List <b>tileList</b></pre><br><dl></dl><br><hr><a name="586"><span style="font-size:larger">pixelWidth</span></a><br><br><pre>private int <b>pixelWidth</b></pre><br><dl></dl><br><hr><a name="587"><span style="font-size:larger">pixelHeight</span></a><br><br><pre>private int <b>pixelHeight</b></pre><br><dl></dl><br><hr><a name="588"><span style="font-size:larger">nrTilesHorizontal</span></a><br><br><pre>private int <b>nrTilesHorizontal</b></pre><br><dl></dl><br><hr><a name="589"><span style="font-size:larger">nrTilesVertical</span></a><br><br><pre>private int <b>nrTilesVertical</b></pre><br><dl></dl><br><hr><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Constructor Detail</span></td>
+      </tr></table><span style="font-size:medium"><a name="591"><span style="font-size:medium">Map</span></a></span><br><pre>public <b>Map</b>(int pixelWidth, int pixelHeight, int nrTilesHorizontal, int nrTilesVertical)</pre><br><dl><br></dl>
+      <hr><br><br><br><br><table border="1" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+         <td bgColor="#CCCCFF"><span style="font-size:large; font-weight:bold">Method Detail</span></td>
+      </tr></table><a name="593"><span style="font-size:medium">getHeight</span></a><br><br><pre>public int  <b>getHeight</b>()</pre><br><dl>
+         <p>Returns the height (in pixels, NOT the vertical number of tiles) of the map
+             
+             
+         </p><br></dl>
+      <hr><a name="594"><span style="font-size:medium">getWidth</span></a><br><br><pre>public int  <b>getWidth</b>()</pre><br><dl>
+         <p>Returns the width (in pixels, NOT the horizontal number of tiles) of the map
+             
+             
+         </p><br></dl>
+      <hr><a name="595"><span style="font-size:medium">getNrTilesHorizontal</span></a><br><br><pre>public int  <b>getNrTilesHorizontal</b>()</pre><br><dl>
+         <p>Returns the amount of tiles in a single row
+             
+             
+         </p><br></dl>
+      <hr><a name="596"><span style="font-size:medium">getNrTilesVertical</span></a><br><br><pre>public int  <b>getNrTilesVertical</b>()</pre><br><dl>
+         <p>Returns the amount of tiles in a single column
+             
+             
+         </p><br></dl>
+      <hr><a name="597"><span style="font-size:medium">addTile</span></a><br><br><pre>public void  <b>addTile</b>(<a href="game_tile_Tile.html">Tile</a> t)</pre><br><dl>
+         <p>Adds a new tile to the map
+             
+             
+         </p><br></dl>
+      <hr><a name="598"><span style="font-size:medium">getTileList</span></a><br><br><pre>public java.util.List <b>getTileList</b>()</pre><br><dl>
+         <p>Returns a list of all tiles in the map
+             
+             
+         </p><br></dl>
+      <hr><a name="599"><span style="font-size:medium">checkClicked</span></a><br><br><pre>public boolean  <b>checkClicked</b>(int mouseX, int mouseY)</pre><br><dl>
+         <p>Checks if a tile was clicked
+             
+             
+         </p><br></dl>
+      <hr><a name="600"><span style="font-size:medium">getSelectedTile</span></a><br><br><pre>public <a href="game_tile_Tile.html">Tile</a> <b>getSelectedTile</b>()</pre><br><dl>
+         <p>Returns the currently selected tile
+             
+             
+         </p><br></dl>
+      <hr><a name="601"><span style="font-size:medium">getTileNorthOf</span></a><br><br><pre>public <a href="game_tile_Tile.html">Tile</a> <b>getTileNorthOf</b>(<a href="game_tile_Tile.html">Tile</a> tile)</pre><br><dl>
+         <p>Returns the tile north of the currently selected tile
+             
+             
+         </p><br></dl>
+      <hr><a name="602"><span style="font-size:medium">getTileSouthOf</span></a><br><br><pre>public <a href="game_tile_Tile.html">Tile</a> <b>getTileSouthOf</b>(<a href="game_tile_Tile.html">Tile</a> tile)</pre><br><dl>
+         <p>Returns the tile south of the currently selected tile
+             
+             
+         </p><br></dl>
+      <hr><a name="603"><span style="font-size:medium">getTileWestOf</span></a><br><br><pre>public <a href="game_tile_Tile.html">Tile</a> <b>getTileWestOf</b>(<a href="game_tile_Tile.html">Tile</a> tile)</pre><br><dl>
+         <p>Returns the tile west of the currently selected tile
+             
+             
+         </p><br></dl>
+      <hr><a name="604"><span style="font-size:medium">getTileEastOf</span></a><br><br><pre>public <a href="game_tile_Tile.html">Tile</a> <b>getTileEastOf</b>(<a href="game_tile_Tile.html">Tile</a> tile)</pre><br><dl>
+         <p>Returns the tile east of the currently selected tile
+             
+             
+         </p><br></dl>
+      <hr><a name="605"><span style="font-size:medium">draw</span></a><br><br><pre>public void  <b>draw</b>()</pre><br><dl>
+         <p>Draws every tile on the map</p><br></dl>
+      <hr><a name="606"><span style="font-size:medium">draw</span></a><br><br><pre>public void  <b>draw</b>(int x, int y, int screenWidth, int screenHeight)</pre><br><dl>
+         <p>Draws only the tiles that are visible on the screen</p><br></dl>
+      <hr><br><br><table bgcolor="#CCCCFF" border="0" cellpadding="1" cellspacing="3" table-layout="fixed" width="100%">
+         <tr bgColor="#CCCCFF" width="100%">
+            <td width="72" align="center"><b><a href="overview-summary.html">Overview</a></b></td>
+            <td width="72" align="center"><b><a href="game.map.html">Package</a></b></td>
+            <td bgColor="#00008B" width="72" align="center"><span style="color:#FFFFFF; font-weight:bold">Class</span></td>
+            <td width="72" align="center">Diagram</td>
+            <td>&nbsp;</td>
+         </tr></tbody>
+      </table>
+      <hr><br><br><center><span style="font-size:xx-small">This documentation has been generated by EclipseUML.</span></center><br></body>
+</html>
