@@ -7,7 +7,7 @@ import engine.Config;
 public class Market extends Structure {
 
 	public Market() {
-		super("Market", 1000, 120, 
+		super("Market", 1000, 120, 10,
 				Config.getTextureManager().getTextureByKey("market_construction"),
 				Config.getTextureManager().getTextureByKey("market_active"),
 				Config.getTextureManager().getTextureByKey("market_destroyed"));

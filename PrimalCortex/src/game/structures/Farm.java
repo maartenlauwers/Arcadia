@@ -5,14 +5,13 @@ import engine.Config;
 
 public class Farm extends Structure {
 	
-	private final int baseProduction = 1;
-	private final int maxLevel = 10;
+	private final int baseProduction = 1;	
 	private int currentLevel;
 		
 	private int generatedFood;
 	
 	public Farm() {
-		super("Farm", 500, 60, 
+		super("Farm", 500, 60, 5,
 				Config.getTextureManager().getTextureByKey("farm_construction"),
 				Config.getTextureManager().getTextureByKey("farm_active"),
 				Config.getTextureManager().getTextureByKey("farm_destroyed"));		

@@ -8,7 +8,7 @@ public class Hovel extends Structure {
 	private int maxInhabitants;
 	
 	public Hovel() {
-		super("Hovel", 500, 30, 
+		super("Hovel", 500, 30, 10,
 				Config.getTextureManager().getTextureByKey("house_construction"),
 				Config.getTextureManager().getTextureByKey("house_active"),
 				Config.getTextureManager().getTextureByKey("house_destroyed"));

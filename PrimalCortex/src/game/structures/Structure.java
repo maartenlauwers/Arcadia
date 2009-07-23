@@ -12,16 +12,18 @@ public abstract class Structure {
 	private int cost;
 	private int timeToBuild;
 	private int health;
-	private int currentLevel;		
+	private int currentLevel;
+	private int maxLevel;
 	private StructureState currentState;
 	
-	public Structure(String name, int cost, int timeToBuild, 
+	public Structure(String name, int cost, int timeToBuild, int maxLevel, 
 			Image texture_construction, Image texture_active, Image texture_destroyed) {
 			this.name = name;
 			this.cost = cost;
 			this.timeToBuild = timeToBuild;		
 			this.health = 0;
-			this.currentLevel = 1;
+			this.currentLevel = 0;
+			this.maxLevel = maxLevel;
 			
 			this.texture_construction = texture_construction;
 			this.texture_active = texture_active;
@@ -114,6 +116,34 @@ public abstract class Structure {
 	 */
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
+	}
+	
+	/**
+	 * Checks whether another building upgrade is possible
+	 * 
+	 * @return true if another upgrade is possible
+	 */
+	public boolean isUpgradePossible() {
+		return currentLevel < maxLevel;			
+	}
+	
+	/**
+	 * Returns the required time to upgrade this structure to the next level.
+	 * 
+	 * @return the required upgrade time
+	 */
+	public int getRequiredUpgradeTime() {
+		double upgradeTime = timeToBuild * (1 + (currentLevel * 0.20));
+		return (int)upgradeTime;
+	}
+	
+	/**
+	 * Upgrades the current structure (when possible)
+	 */
+	public void upgrade() {
+		if(isUpgradePossible()) {			
+			build(getRequiredUpgradeTime());
+		}			
 	}
 	
 	/**

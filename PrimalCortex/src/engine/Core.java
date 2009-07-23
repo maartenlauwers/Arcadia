@@ -149,31 +149,8 @@ public class Core extends BasicGame {
     	if (input.isMouseButtonDown(0)) {
     		if(isLeftMouseDown == false) {
     			isLeftMouseDown = true;
-    			
-    			boolean guiClicked = game.checkGUIClicked(mouseX, mouseY);    			
-    			
-    			// If the GUI wasn't clicked, it could have been one of the tiles
-    			if(!guiClicked) {
-    				
-    				if(game.onLocalMap()) {
-    					for(Tile t : game.getLocalMap().getTileList()) {
-        	    			
-        		    		t.setSelected(false);
-        		    		if (t.isClicked(mouseX, mouseY)) {
-        		    			t.setSelected(true);    		    			
-        		    		}
-        		    	}
-    				} else {
-    					for(Tile t : game.getWorldMap().getOnScreenTileList()) {
-        	    			
-        		    		t.setSelected(false);
-        		    		if (t.isClicked(mouseX, mouseY)) {
-        		    			t.setSelected(true);    		    			
-        		    		}
-        		    	}
-    				}
-    					
-    			}    			
+    			    			
+    			game.handleLeftMouseClick(mouseX, mouseY);    			
     		}    		    		
     	}
     	

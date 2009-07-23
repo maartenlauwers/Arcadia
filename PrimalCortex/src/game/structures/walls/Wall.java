@@ -6,18 +6,13 @@ import game.structures.StructureType;
 
 import org.newdawn.slick.Image;
 
-public abstract class Wall extends Structure {
-	
-	private final int maxLevel = 10;
-	private int currentLevel;
+public abstract class Wall extends Structure {		
 	
 	public Wall(Image construction, Image active, Image destroyed) {
-		super("Wall", 100, 1, 
+		super("Wall", 100, 1, 10, 
 				construction,
 				active,
-				destroyed);		
-		
-		currentLevel = 1;		
+				destroyed);					
 		
 		setState(new ConstructionState(this));			
 		build(getTimeToBuild());

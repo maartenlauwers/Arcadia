@@ -29,6 +29,7 @@ import engine.gui.widgets.Button;
 import engine.gui.widgets.Label;
 import engine.gui.widgets.Panel;
 import engine.gui.widgets.PictureBox;
+import game.dialogs.StructureDialog;
 import game.map.LocalMap;
 import game.map.Map;
 import game.map.WorldMap;
@@ -399,6 +400,61 @@ public class Game implements GuiListener, ActionListener {
 		
 		windowList.add("WallBuildMenu", newWindow);
 	}
+
+	
+	/**
+	 * Handles a left mouse click event 
+	 */
+	public void handleLeftMouseClick(int mouseX, int mouseY) {
+		
+		
+		boolean guiClicked = checkGUIClicked(mouseX, mouseY);    			
+		
+		// If the GUI wasn't clicked, it could have been one of the tiles
+		if(!guiClicked) {
+			
+			if(onLocalMap()) {
+				for(Tile t : getLocalMap().getTileList()) {
+	    			
+		    		t.setSelected(false);
+		    		if (t.isClicked(mouseX, mouseY)) {
+		    			t.setSelected(true);
+		    			
+		    			// If a tile with a structure was selected, show the structure's menu
+		    			if(! t.getStructure().getType().equals(StructureType.GRASS)) {
+		    				
+		    				Structure structure = t.getStructure();
+		    				
+		    				if(structure.isActive()) {
+		    					
+		    					StringBuffer message = new StringBuffer();
+		    					message.append("Building: " + structure.getName() + "/n");
+		    					message.append("Level: " + structure.getCurrentLevel() + "/n");
+		    					message.append("Time to upgrade: " + structure.getRequiredUpgradeTime() + " seconds /n");
+		    					message.append("Cost to upgrade: " + (int)(structure.getCost() * (1 + (structure.getCurrentLevel() * 0.20))) + " gold");	// TODO: Cost hardcoded formula
+		    					
+		    					
+		    					StructureDialog sd = new StructureDialog("UpgradeDialog", "Structure dialog", message.toString(), 380, 130, structure.getTexture(), 64, 64);
+			    				sd.addGuiListener(this);
+			    				windowList.add("UpgradeDialog", sd);	
+		    				}
+		    				
+		    			}
+		    		}
+		    	}
+			} else {
+				for(Tile t : getWorldMap().getOnScreenTileList()) {
+	    			
+		    		t.setSelected(false);
+		    		if (t.isClicked(mouseX, mouseY)) {
+		    			t.setSelected(true);    		    			
+		    		}
+		    	}
+			}
+				
+		}    			
+				
+	}
 	
 	/**
 	 * Handles all received GUI events
@@ -551,6 +607,16 @@ public class Game implements GuiListener, ActionListener {
 					// We assume that a build button was clicked, in which case the window may be closed
 					windowList.remove("WallBuildMenu");
 				}
+			}
+		}
+		
+		if(winId.equals("UpgradeDialog")) {
+			if(event.getObjectId().equals("Close")) {
+				windowList.remove("UpgradeDialog");
+			}
+			
+			if(event.getObjectId().equals("Upgrade")) {
+				
 			}
 		}
 		
@@ -740,4 +806,6 @@ public class Game implements GuiListener, ActionListener {
 		}
 		
 	}
+
+	
 }

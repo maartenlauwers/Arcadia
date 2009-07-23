@@ -24,8 +24,7 @@ public class ConstructionState extends StructureState implements ActionListener 
 		this.timeLeft = timeToBuild;
 		
 		timer = new Timer(1000, this);
-		timer.start(); 
-		System.out.println("Build started");
+		timer.start(); 		
 	}
 	
 	public void destroy() {
@@ -70,7 +69,20 @@ public class ConstructionState extends StructureState implements ActionListener 
 						
 			timer.restart();
 		} else {
-			structure.setState(new ActiveState(structure));
+			
+			// Lets use the construction state as the upgrade state because both states share the same characteristics.
+			// Every time we reconstruct, we upgrade the level of the building.
+			// The destroyed state is responsible for resetting the level of the building.
+			
+			// We assume that it's possible to advance another level. If the building was just erected, then its current level
+			// is zero and thus an upgrade is possible. If it was already existing, then we had to execute the 'upgrade()' method
+			// from the Structure class which checked whether a further upgrade was possible or not. Either way, we only get here
+			// if a further upgrade is possible.
+			structure.setCurrentLevel(structure.getCurrentLevel() + 1);
+			
+			// Advance to the active state
+			structure.setState(new ActiveState(structure));					
+			
 			timer.stop();
 		}
 	}

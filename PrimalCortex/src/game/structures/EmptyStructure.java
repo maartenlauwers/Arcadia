@@ -8,7 +8,7 @@ public class EmptyStructure extends Structure {
 
 	
 	public EmptyStructure() {
-		super("Grass", 0, 0, 
+		super("Grass", 0, 0, 1,
 				Config.getTextureManager().getTextureByKey("transparent"),
 				Config.getTextureManager().getTextureByKey("transparent"),
 				Config.getTextureManager().getTextureByKey("transparent"));	
