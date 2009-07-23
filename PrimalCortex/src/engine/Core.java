@@ -167,7 +167,7 @@ public class Core extends BasicGame {
     	
     	if(game.onLocalMap()) {
     		// Draw the local map
-    		game.getLocalMap().draw();
+    		game.getLocalMap().draw(g);
     		
     		for(Tile t: game.getLocalMap().getTileList()) {
         		if(t.isSelected()) {    			    			
@@ -176,7 +176,7 @@ public class Core extends BasicGame {
         	}
     	} else {
     		// Draw the world map
-    		game.getWorldMap().draw();
+    		game.getWorldMap().draw(g);
     		
     		for(Tile t: game.getWorldMap().getOnScreenTileList()) {
             	if(t.isSelected()) {    			    			

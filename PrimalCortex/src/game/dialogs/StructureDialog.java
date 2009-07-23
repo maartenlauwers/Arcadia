@@ -35,9 +35,9 @@ public class StructureDialog implements Window {
 	
 	private List<Widget> widgetList;
 	
-	public StructureDialog(String id, String title, String message, Image picture, int picWidth, int picHeight) {
+	public StructureDialog(String id, String title, String message, Image picture, int picWidth, int picHeight, boolean upgradeButton) {
 		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 		
 		this.status = WindowStatus.ACTIVE;
 		this.id = id;
@@ -57,14 +57,19 @@ public class StructureDialog implements Window {
 		//TODO: Add title to the dialog window
 		addWidget(new Panel(id, 0, 0, width, height, true));		
 		
-		addWidget(new PictureBox(id, 10, height/2 - picHeight/2, picWidth, picHeight, picture));
+		addWidget(new PictureBox(id, 10, 10, picWidth, picHeight, picture));
 		addWidget(new Label(id, width/2 - ttf.getWidth(message)/2 + 10 + picWidth + 10, 15, message));
 		
-		addWidget(new Button(id, width/2 - 115, height - 30, "Upgrade", "Upgrade"));
-		addWidget(new Button(id, width/2 + 7, height - 30, "Close", "Close"));	
+		if(upgradeButton) {
+			addWidget(new Button(id, width/2 - 115, height - 30, "Upgrade", "Upgrade"));
+			addWidget(new Button(id, width/2 + 7, height - 30, "Close", "Close"));	
+		} else {			
+			addWidget(new Button(id, width/2 - 54, height - 30, "Close", "Close"));
+		}
+			
 	}
 	
-	public StructureDialog(String id, String title, String message, int width, int height, Image picture, int picWidth, int picHeight) {
+	public StructureDialog(String id, String title, String message, int width, int height, Image picture, int picWidth, int picHeight, boolean upgradeButton) {
 		this.status = WindowStatus.ACTIVE;
 		this.id = id;
 		this.title = title;
@@ -82,8 +87,8 @@ public class StructureDialog implements Window {
 		
 		//TODO: Add title to the dialog window
 		addWidget(new Panel(id, 0, 0, width, height, true));				
-		addWidget(new PictureBox(id, 10, height/2 - picHeight/2, picWidth, picHeight, picture));		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		addWidget(new PictureBox(id, 10, 10, picWidth, picHeight, picture));		
+		TrueTypeFont ttf = Config.getFont1();
 				
 		
 		ArrayList<Integer> breaks = new ArrayList<Integer>();
@@ -111,8 +116,12 @@ public class StructureDialog implements Window {
 			top += 18;
 		}
 					
-		addWidget(new Button(id, width/2 - 115, height - 30, "Upgrade", "Upgrade"));
-		addWidget(new Button(id, width/2 + 7, height - 30, "Close", "Close"));	
+		if(upgradeButton) {
+			addWidget(new Button(id, width/2 - 115, height - 30, "Upgrade", "Upgrade"));
+			addWidget(new Button(id, width/2 + 7, height - 30, "Close", "Close"));	
+		} else {			
+			addWidget(new Button(id, width/2 - 54, height - 30, "Close", "Close"));
+		}	
 	}	
 	
 	public void addWidget(Widget w) {

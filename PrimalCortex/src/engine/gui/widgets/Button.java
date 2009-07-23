@@ -156,7 +156,7 @@ public class Button implements Widget {
 		}
 		
 		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 		int textWidth = ttf.getWidth(text);
 		int textHeight = ttf.getHeight(text);
 		g.setFont(ttf);	//TODO: It's probably ok to set this only once in the engine core.

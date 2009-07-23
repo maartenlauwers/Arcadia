@@ -45,7 +45,7 @@ public class StatusBar {
 		panel = new Panel("Statusbar", 0, 0, window.getWidth(), window.getHeight(), false);
 		
 		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 		
 		kingdomLabel = new Label("Statusbar", 10, 5, kingdom.getName());				
 		
@@ -112,7 +112,7 @@ public class StatusBar {
 	
 	public void update(String messagePopulation, String messageGold, String messageFood, String messageTraining) {
 		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 		
 		int offset = 10 + ttf.getWidth(kingdom.getName()) + 25;
 		populationLabel.setX(offset + 20);

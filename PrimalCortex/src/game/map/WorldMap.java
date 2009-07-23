@@ -3,6 +3,8 @@ package game.map;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.newdawn.slick.Graphics;
+
 import engine.Config;
 import game.tile.Tile;
 
@@ -95,7 +97,7 @@ public class WorldMap extends Map {
 		return tileListCopy;
 	}
 	
-	public void draw() {
+	public void draw(Graphics g) {
 		
 		
 		int[] requiredIndices = new int[nrHorizontalTilesOnScreen * nrVerticalTilesOnScreen];
@@ -139,7 +141,7 @@ public class WorldMap extends Map {
 				verTilesChecked++;
 			}
 			System.out.println("X: " + t.getX() + ", Y: " + t.getY());
-			t.draw();
+			t.draw(g);
 		}
 					
 	}

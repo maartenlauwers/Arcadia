@@ -30,7 +30,7 @@ private WindowStatus status;
 	
 	public QuestionWindow(String id, String title, String message) {
 		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 		
 		this.status = WindowStatus.ACTIVE;
 		this.id = id;
@@ -74,7 +74,7 @@ private WindowStatus status;
 		//TODO: Add title to the dialog window
 		addWidget(new Panel(id, 0, 0, width, height, true));		
 		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 		addWidget(new Label(id, width/2 - ttf.getWidth(message)/2, height/2 - ttf.getHeight()/2, message));
 		addWidget(new Button(id, 10, height - 30, "Yes", "Yes"));	
 		addWidget(new Button(id, width - 120, height - 30, "No", "No"));

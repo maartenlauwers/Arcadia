@@ -69,6 +69,8 @@ public class Game implements GuiListener, ActionListener {
 	private Timer gameTimer;
 	private DualMap windowList;
 	
+	private Structure tempUpgradeStructure;
+	
 	public Game(Core engine) {
 		this.engine = engine;		
 		this.textureManager = Config.getTextureManager();
@@ -420,23 +422,39 @@ public class Game implements GuiListener, ActionListener {
 		    		if (t.isClicked(mouseX, mouseY)) {
 		    			t.setSelected(true);
 		    			
-		    			// If a tile with a structure was selected, show the structure's menu
+		    			// If a tile with a structure was selected, show the structure's upgrade menu
 		    			if(! t.getStructure().getType().equals(StructureType.GRASS)) {
 		    				
 		    				Structure structure = t.getStructure();
 		    				
 		    				if(structure.isActive()) {
 		    					
-		    					StringBuffer message = new StringBuffer();
-		    					message.append("Building: " + structure.getName() + "/n");
-		    					message.append("Level: " + structure.getCurrentLevel() + "/n");
-		    					message.append("Time to upgrade: " + structure.getRequiredUpgradeTime() + " seconds /n");
-		    					message.append("Cost to upgrade: " + (int)(structure.getCost() * (1 + (structure.getCurrentLevel() * 0.20))) + " gold");	// TODO: Cost hardcoded formula
+		    					// See if it can be further upgraded
+		    					if(structure.isUpgradePossible()) {
+		    						StringBuffer message = new StringBuffer();
+			    					message.append("Building: " + structure.getName() + "/n");
+			    					message.append("Level: " + structure.getCurrentLevel() + "/n");
+			    					message.append("Time to upgrade: " + structure.getRequiredUpgradeTime() + " seconds /n");
+			    					message.append("Cost to upgrade: " + (int)(structure.getCost() * (1 + (structure.getCurrentLevel() * 0.20))) + " gold");	// TODO: Cost hardcoded formula
+			    					
+			    					
+			    					StructureDialog sd = new StructureDialog("UpgradeDialog", "Structure dialog", message.toString(), 380, 130, structure.getTexture(), 64, 64, true);
+				    				sd.addGuiListener(this);
+				    				windowList.add("UpgradeDialog", sd);
+				    				
+				    				tempUpgradeStructure = structure;
+		    					} else {
+		    						StringBuffer message = new StringBuffer();
+			    					message.append("Building: " + structure.getName() + "/n");
+			    					message.append("Level: " + structure.getCurrentLevel() + "/n");
+			    					message.append("This structure cannot be upgraded any further.");			    					
+			    					
+			    					
+			    					StructureDialog sd = new StructureDialog("UpgradeDialog", "Structure dialog", message.toString(), 380, 100, structure.getTexture(), 64, 64, false);
+				    				sd.addGuiListener(this);
+				    				windowList.add("UpgradeDialog", sd);				    								    			
+		    					}
 		    					
-		    					
-		    					StructureDialog sd = new StructureDialog("UpgradeDialog", "Structure dialog", message.toString(), 380, 130, structure.getTexture(), 64, 64);
-			    				sd.addGuiListener(this);
-			    				windowList.add("UpgradeDialog", sd);	
 		    				}
 		    				
 		    			}
@@ -616,6 +634,13 @@ public class Game implements GuiListener, ActionListener {
 			}
 			
 			if(event.getObjectId().equals("Upgrade")) {
+				tempUpgradeStructure.upgrade();
+				
+				// Deduct the cost from the treasury
+				kingdom.setWealth(kingdom.getWealth() - (int)(tempUpgradeStructure.getCost() * (1 + (tempUpgradeStructure.getCurrentLevel() * 0.20))));
+				
+				tempUpgradeStructure = null;
+				windowList.remove("UpgradeDialog");							
 				
 			}
 		}

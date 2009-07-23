@@ -141,7 +141,8 @@ public abstract class Structure {
 	 * Upgrades the current structure (when possible)
 	 */
 	public void upgrade() {
-		if(isUpgradePossible()) {			
+		if(isUpgradePossible()) {	
+			setState(new ConstructionState(this));		
 			build(getRequiredUpgradeTime());
 		}			
 	}

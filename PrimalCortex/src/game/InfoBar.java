@@ -36,7 +36,7 @@ public class InfoBar {
 		panel = new Panel("InfoBar", 0, 0, window.getWidth(), window.getHeight(), false);
 		
 		
-		TrueTypeFont ttf = Config.getCurrentFont();						
+		TrueTypeFont ttf = Config.getFont1();						
 		structureBar = new ProgressBar("InfoBar", "", 10, 5, 300, 20, Config.getTextureManager().getTextureByKey("progressbar"), 0);				
 
 		mapButton = new Button("InfoBar", Config.getScreenWidth() - 240, 5, "World map", "WorldMap");
@@ -82,7 +82,7 @@ public class InfoBar {
 	
 	public void update(int structureProgress, String structureText) {
 		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 		
 		structureBar.setProgress(structureProgress);
 		structureBar.setText(structureText);

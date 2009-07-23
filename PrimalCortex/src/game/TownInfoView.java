@@ -95,7 +95,7 @@ public class TownInfoView {
 	
 	public void update(int population, int treasury, int taxes, int foodstocks, int production, int consumption) {
 		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 		
 		labelPopulation.setText("Population: " + population);
 		labelTreasury.setText("Treasury: " + treasury);

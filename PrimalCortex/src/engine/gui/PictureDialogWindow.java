@@ -37,7 +37,7 @@ public class PictureDialogWindow implements Window {
 	
 	public PictureDialogWindow(String id, String title, String message, Image picture, int picWidth, int picHeight) {
 		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 		
 		this.status = WindowStatus.ACTIVE;
 		this.id = id;
@@ -81,7 +81,7 @@ public class PictureDialogWindow implements Window {
 		//TODO: Add title to the dialog window
 		addWidget(new Panel(id, 0, 0, width, height, true));				
 		addWidget(new PictureBox(id, 10, height/2 - picHeight/2, picWidth, picHeight, picture));		
-		TrueTypeFont ttf = Config.getCurrentFont();
+		TrueTypeFont ttf = Config.getFont1();
 				
 		
 		ArrayList<Integer> breaks = new ArrayList<Integer>();

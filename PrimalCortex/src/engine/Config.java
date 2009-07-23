@@ -13,7 +13,8 @@ public class Config {
 	
 	private static int screenWidth;
 	private static int screenHeight;
-	private static TrueTypeFont ttf;	
+	private static TrueTypeFont font1;
+	private static TrueTypeFont font2;
 	
 	//private Core instance;
 	
@@ -28,7 +29,10 @@ public class Config {
             InputStream oi = ResourceLoader
                              .getResourceAsStream("black.ttf");
             java.awt.Font f = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, oi);
-            ttf = new TrueTypeFont(f.deriveFont(16f), true);
+            font1 = new TrueTypeFont(f.deriveFont(16f), true);
+            
+            f = new java.awt.Font("Arial", java.awt.Font.BOLD, 12);
+            font2 = new TrueTypeFont(f.deriveFont(12f), true);
         } catch (Exception e) {
             System.out.println("Failed to load font");
         } 
@@ -47,7 +51,11 @@ public class Config {
 		return textureManager;
 	}
 	
-	public static TrueTypeFont getCurrentFont() {
-		return ttf;
+	public static TrueTypeFont getFont1() {
+		return font1;
+	}
+	
+	public static TrueTypeFont getFont2() {
+		return font2;
 	}
 }

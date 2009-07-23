@@ -8,9 +8,15 @@
 
 package game.tile;
 
+import engine.Config;
+import org.newdawn.slick.TrueTypeFont;
+
 import game.structures.EmptyStructure;
 import game.structures.Structure;
+import game.structures.StructureType;
 
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 
@@ -119,28 +125,7 @@ public class Tile {
 	 */
 	public void setSelected(boolean selected) {				
 		this.selected = selected;						
-	}
-	
-	/**
-	 * Returns the tile's current role
-	 * 
-	 * @return the tile's role
-	 */
-	/*
-	public Role getRole() {
-		return role;
-	}
-	*/
-	/**
-	 * Sets the tile's current role
-	 * 
-	 * @param role the tile's role
-	 */
-	/*
-	public void setRole(Role role) {
-		this.role = role;
-	}
-	*/
+	}	
 	
 	public void setStructure(Structure structure) {
 		this.structure = structure;
@@ -153,8 +138,28 @@ public class Tile {
 	/**
 	 * Draws the texture of the current tile on the screen
 	 */
-	public void draw() {		
+	public void draw(Graphics g) {		
 		texture.draw(x, y, width, height);
 		structure.getTexture().draw(x,y);
+		
+		// Show the structure's level
+		if(! structure.getType().equals(StructureType.GRASS)) {
+			
+			TrueTypeFont ttf = Config.getFont2();			
+			
+			g.setColor(Color.orange);
+			g.fillRect(x + (width - 16), y + (height - 12), 16, 12);
+			
+			g.setColor(Color.white);			
+			
+			// If the level text consists of 2 numbers, we have to edit its position
+			if(structure.getCurrentLevel() >= 10) {
+				ttf.drawString(x + (width - 15), y + (height - 13), "" + structure.getCurrentLevel());		
+			} else {
+				ttf.drawString(x + (width - 10), y + (height - 13), "" + structure.getCurrentLevel());
+			}
+					
+		}
+		
 	}
 }

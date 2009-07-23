@@ -52,7 +52,7 @@ public class Label implements Widget {
 	}
 	
 	public void draw(Graphics g) {	
-		g.setFont(Config.getCurrentFont());
+		g.setFont(Config.getFont1());
 		g.drawString(text, x, y);
 	}
 

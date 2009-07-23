@@ -5,6 +5,8 @@ import game.tile.Tile;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.newdawn.slick.Graphics;
+
 public abstract class Map {
 
 	private List<Tile> tileList;
@@ -202,9 +204,9 @@ public abstract class Map {
 	/**
 	 * Draws every tile on the map
 	 */
-	public void draw() {
+	public void draw(Graphics g) {
 		for(Tile t : tileList) {
-			t.draw();
+			t.draw(g);
 		}
 	}
 	
@@ -212,11 +214,11 @@ public abstract class Map {
 	 * Draws only the tiles that are visible on the screen
 	 */
 	
-	public void draw(int x, int y, int screenWidth, int screenHeight) {
+	public void draw(int x, int y, int screenWidth, int screenHeight, Graphics g) {
 		for(Tile t : tileList) {
 			if(t.getX() >= x && t.getX() <= (x + screenWidth - t.getWidth()) ) {
 				if(t.getY() >= y && t.getY() <= (y + screenHeight - t.getHeight()) ) {
-					t.draw();
+					t.draw(g);
 				}
 				
 			}
